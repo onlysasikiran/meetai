@@ -20,6 +20,17 @@ Phase 1 implements the conventional RAG comparator. Phase 2 is scoped to hierarc
 | Answer | Qwen3-4B Q4_K_M answers locally. A validator checks that cited IDs occurred in the delivered evidence. Whole-meeting summaries use contiguous map/reduce. |
 | Reuse | SQLite stores indexes and exact answers under content and configuration hashes. |
 
+## Datasets
+
+| Dataset | Phase 1 use | Source |
+| --- | --- | --- |
+| ELITR-Bench | Factual meeting QA. English dev meetings 001 and 003 for tuning, 002 and 004 for the checkpoint. | [Questions and reference answers](https://github.com/utter-project/ELITR-Bench) · [Original transcripts](https://hdl.handle.net/11234/1-4692) |
+| QMSum | Topic summaries and supporting turns. Training meetings Bed004 and ES2002a for tuning, validation meetings Bed002 and Bmr005 for the checkpoint. | [Dataset and annotations](https://github.com/Yale-LILY/QMSum) |
+| MeetingBank | City council agenda segments from the validation split for ingestion measurements and summary testing. | [Dataset downloads](https://huggingface.co/datasets/huuuyeah/meetingbank) · [Project](https://meetingbank.github.io/) |
+| MeetAI-Stress | Project-generated meetings with changed owners, revised dates, distant evidence and unanswerable questions. Scenarios 0–1 for tuning, 2–3 for the checkpoint. | [Generator and ground truth](bench/stress.py) |
+
+The [asset manifest](configs/assets.json) records the original download URLs and SHA-256 checksums. The [benchmark protocol](BENCHMARK.md) lists the splits reserved for later evaluation. See [source and license notes](SOURCES.md) for reuse terms.
+
 ## Measured results
 
 | Checkpoint workload | Questions | Answer correctness, factual-unit F1 | Evidence recall | Unsupported claims |
