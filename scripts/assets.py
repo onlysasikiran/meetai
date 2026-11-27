@@ -20,7 +20,10 @@ def main():
     parser.add_argument("--group", choices=["all", "models", "raw"], default="all")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
-    for name, info in json.loads((root / "configs/assets.json").read_text()).items():
+    assets = {}
+    for manifest in ("assets.json", "meetai-assets.json"):
+        assets.update(json.loads((root / "configs" / manifest).read_text()))
+    for name, info in assets.items():
         if args.group != "all" and not name.startswith(args.group + "/"):
             continue
         dest = root / ".assets" / name
