@@ -3,6 +3,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 LABEL = re.compile(r"^(?:[-*]\s+)?(?:\*\*)?([\w \[\]()./'-]{1,64})(?:\*\*)?:(?:\*\*)?\s*(.*)$")
+TIME = r"\d{1,2}:\d{2}(?::\d{2})?(?:[.,]\d{1,3})?"
+STAMPED = re.compile(r"^(?:[-*]\s+)?(?:\[(" + TIME + r")\]|(" + TIME + r"))\s+(.+)$")
 CITE = re.compile(r"\[T(\d+(?:\.\d+)?)\]")
 
 
@@ -12,9 +14,11 @@ class Line:
     turn: int
     speaker: str
     text: str
+    timestamp: str | None = None
 
     def render(self):
-        return f"[T{self.id}] {escape(self.speaker)}: {escape(self.text)}"
+        time = f"({self.timestamp}) " if self.timestamp else ""
+        return f"[T{self.id}] {time}{escape(self.speaker)}: {escape(self.text)}"
 
 
 def escape(text):
@@ -22,7 +26,7 @@ def escape(text):
     return CITE.sub(lambda m: "［T" + m[1] + "］", text).replace("<|", "‹|").replace("|>", "|›")
 
 
-def read_turns(path):
+def read_turns(path, *, timestamps=False):
     path = Path(path)
     if path.suffix.lower() == ".pdf":
         from pypdf import PdfReader
@@ -37,15 +41,19 @@ def read_turns(path):
         raw = raw.strip()
         if not raw or (path.suffix.lower() == ".md" and re.match(r"^#{1,6}(?:\s|$)", raw)):
             continue
+        stamp = None
+        if timestamps and (timed := STAMPED.match(raw)):
+            stamp = timed[1] or timed[2]
+            raw = timed[3]
         match = LABEL.match(raw)
         if match:
-            turns.append((match[1].strip("* "), match[2].strip()))
-        elif turns and turns[-1][0] != "Transcript":
-            speaker, previous = turns[-1]
-            turns[-1] = (speaker, (previous + " " + raw).strip())
+            turns.append((match[1].strip("* "), match[2].strip(), stamp))
+        elif turns and turns[-1][0] != "Transcript" and stamp is None:
+            speaker, previous, start = turns[-1]
+            turns[-1] = (speaker, (previous + " " + raw).strip(), start)
         else:
-            turns.append(("Transcript", raw))
-    turns = [(speaker, body) for speaker, body in turns if body]
+            turns.append(("Transcript", raw, stamp))
+    turns = [row if timestamps else row[:2] for row in turns if row[1]]
     if not turns:
         raise ValueError("The transcript contains no extractable text")
     return turns
@@ -54,7 +62,7 @@ def read_turns(path):
 def split_turns(turns, tokens, limit):
     """Split exceptional turns without losing text or original turn identity."""
     lines = []
-    for turn, (speaker, text) in enumerate(turns, 1):
+    for turn, (speaker, text, *stamp) in enumerate(turns, 1):
         remaining = text
         parts = []
         while len(tokens(remaining)) > limit:
@@ -73,7 +81,7 @@ def split_turns(turns, tokens, limit):
             parts.append(remaining)
         for part, body in enumerate(parts, 1):
             code = str(turn) if len(parts) == 1 else f"{turn}.{part}"
-            lines.append(Line(code, turn, speaker, body))
+            lines.append(Line(code, turn, speaker, body, stamp[0] if stamp else None))
     return lines
 
 

@@ -1,6 +1,6 @@
 # MeetAI · Meeting transcript RAG
 
-**Phase 1 delivers a frozen local baseline and the benchmark that later versions must beat.** It reads one English PDF, Markdown or TXT transcript, answers questions with speaker-turn citations, and summarizes the meeting. It runs on CPU without API keys.
+MeetAI answers questions about one English meeting, summarizes discussions and extracts cited decisions and action items. It reads TXT, Markdown and text-layer PDF files and runs on CPU without an API key. **Phase 2 delivers the working MeetAI system alongside the frozen Phase 1 baseline.**
 
 ## Problem statement
 
@@ -10,15 +10,18 @@ In one checkpoint meeting, the baseline returned the revised deadline but named 
 
 ## Solution and architecture
 
-Phase 1 implements the conventional RAG comparator. Phase 2 is scoped to hierarchical organization, links between distant passages, and adaptive retrieval. Its performance is an open question.
+Both systems use the same speaker turns, BGE-small embeddings, BM25, MiniLM reranker, Qwen3-4B generator and citation format.
 
-| Stage | Implemented baseline |
-| --- | --- |
-| Ingest | Parse text, retain speaker and source IDs, split long turns, group turns into 160-token child chunks. |
-| Retrieve | Combine BM25 and BGE-small cosine rankings using reciprocal rank fusion. MiniLM scores up to 12 candidates. |
-| Assemble | Select the top 3 children and expand within two-child parents. Deduplicate and sort evidence chronologically within 1,024 Qwen tokens. |
-| Answer | Qwen3-4B Q4_K_M answers locally. A validator checks that cited IDs occurred in the delivered evidence. Whole-meeting summaries use contiguous map/reduce. |
-| Reuse | SQLite stores indexes and exact answers under content and configuration hashes. |
+| Stage | Standard baseline | MeetAI |
+| --- | --- | --- |
+| Organize | Fixed 160-token children with two-child parents | Group neighboring children into discussion blocks by embedding similarity. Build sparse cross-block links from shared terms and semantic neighbors. Record explicit, unambiguous aliases with source IDs. |
+| Retrieve | Rerank 12 candidate passages and expand three children | Start with the same hybrid search. For missing evidence, revisions or topic questions, also inspect parent blocks, remote links and alias references. Rerank at most 36 source turns. |
+| Assemble | Chronological evidence under 1,024 tokens | Prioritize complementary facts, filter similar project names, deduplicate and restore source order. The simple route has a 320-token ceiling and the expanded route has 1,024. |
+| Validate | Check that cited turns were delivered | Also check numbers, named subjects and evidence for revisions. A local entailment model scores each claim against its citations. Unsupported claims can trigger abstention. |
+| Summarize or extract | Contiguous map/reduce summaries | Select turns across discussion blocks, consolidate original citations hierarchically, and produce summaries or typed minutes with cited owners and deadlines. |
+| Reuse | SQLite index and exact-answer cache | Also persist the hierarchy and links. The two systems have separate answer-cache keys. |
+
+On the 190-turn Juniper development fixture, MeetAI returned **Marek** at turn 145 and **May 9** at turn 170. A separate question needed turn 23 to connect Juniper to its internal name and turn 94 to establish the **Cedar** gate. Both citations appeared in the answer. These are functional examples. The held-out comparison belongs to Phase 3. [Executed Phase 2 cases](results/phase2-functional.json)
 
 ## Datasets
 
@@ -31,7 +34,7 @@ Phase 1 implements the conventional RAG comparator. Phase 2 is scoped to hierarc
 
 The [asset manifest](configs/assets.json) records the original download URLs and SHA-256 checksums. The [benchmark protocol](BENCHMARK.md) lists the splits reserved for later evaluation. See [source and license notes](SOURCES.md) for reuse terms.
 
-## Measured results
+## Phase 1 baseline measurements
 
 | Checkpoint workload | Questions | Answer correctness, factual-unit F1 | Evidence recall | Unsupported claims |
 | --- | ---: | ---: | ---: | ---: |
@@ -47,7 +50,8 @@ The benchmark measured **25.28 s P95** for 44 requests that required fresh infer
 
 | File | Contents |
 | --- | --- |
-| [Phase report](PHASE_REPORT.md) | Completed work, tests, decisions, limitations and Phase 2 handoff |
+| [Phase report](PHASE_REPORT.md) | Phase 2 changes, functional tests, limitations and Phase 3 handoff |
+| [MeetAI settings](configs/meetai.json) · [Functional results](results/phase2-functional.json) | Phase 2 settings and model outputs from the acceptance cases |
 | [Benchmark protocol](BENCHMARK.md) | Data splits, six metrics, claim-review rules and reproduction commands |
 | [Research and dependencies](SOURCES.md) | Research decisions, upstream data terms, model sources and pinned assets |
 | [Frozen settings](configs/baseline.json) | Winning retrieval settings and generator configuration |
@@ -58,10 +62,14 @@ The benchmark measured **25.28 s P95** for 44 requests that required fresh infer
 
 ## Local entry points
 
-Setup and reproduction scripts are provided for future developers. The published measurements were executed in the project workspace.
+The CLI defaults to the frozen baseline for existing callers. Use `--system meetai` for linked retrieval. `--extract` selects MeetAI automatically.
 
 ```bash
 bash scripts/setup.sh
-.venv/bin/python -m meetai examples/launch.pdf --ask "Who owns the launch now?"
-.venv/bin/python -m meetai examples/launch.md --summary
+.venv/bin/python -m meetai examples/launch.pdf --system meetai --ask "Who is the current launch owner?" --trace
+.venv/bin/python -m meetai examples/riverside.txt --system meetai --summary
+.venv/bin/python -m meetai examples/riverside.txt --extract
+.venv/bin/python -m meetai examples/launch.md --system baseline --ask "Who is the current launch owner?"
 ```
+
+Every released claim includes source IDs. The `evidence` object resolves them to the speaker, original text, turn number and timestamp when available. Extracted minutes can include decisions, actions, commitments, open issues and follow-ups. An absent or unsupported owner or deadline is returned as `null`.
