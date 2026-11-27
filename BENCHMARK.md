@@ -2,7 +2,7 @@
 
 ## What is being measured
 
-One English transcript per index. All neural inference runs in one local CPU process. The published checkpoint compares settings of a conventional flat RAG pipeline. The Phase 3 comparison will add the linked MeetAI pipeline.
+One English transcript per index. All neural inference runs in one local CPU process. The published checkpoint compares settings of a conventional flat RAG pipeline. The linked pipeline was implemented in Phase 2. Phase 3 will run the matched comparison.
 
 | Split | ELITR-Bench | QMSum | MeetAI-Stress | MeetingBank |
 | --- | --- | --- | --- | --- |

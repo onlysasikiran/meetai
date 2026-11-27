@@ -30,3 +30,14 @@ The project downloads upstream assets by SHA-256. The public repository contains
 | LongRefiner and VikingRAG | Candidates for organizing and refining context in Phase 2. Their published numbers are separate experiments. [LongRefiner](https://aclanthology.org/2025.acl-long.176/) · [VikingRAG](https://arxiv.org/abs/2609.11390) |
 | Geometric Gain Graph and EfficientRAG | Lightweight linking and targeted additional retrieval are candidate approaches for distant evidence. [Graph paper](https://arxiv.org/abs/2609.19622) · [EfficientRAG](https://aclanthology.org/2024.emnlp-main.199/) |
 | Zep and LLMLingua-2 | References for evolving facts and compression. Each addition requires a comparison with the frozen baseline. [Zep](https://arxiv.org/abs/2501.13956) · [LLMLingua-2](https://arxiv.org/abs/2403.12968) |
+
+## Phase 2 implementation decisions
+
+| Source | How MeetAI uses the idea |
+| --- | --- |
+| LongRefiner | Organize context hierarchically and select evidence at more than one level. MeetAI forms contiguous topic blocks from existing embeddings and retrieves their original turns. [ACL paper](https://aclanthology.org/2025.acl-long.176/) · [Authors’ code](https://github.com/ignorejjj/LongRefiner) |
+| EfficientRAG and VikingRAG | Use an initial evidence check to decide whether another retrieval step is warranted. MeetAI uses one bounded expansion, with no generative calls during retrieval. [EfficientRAG](https://aclanthology.org/2024.emnlp-main.199/) · [VikingRAG](https://arxiv.org/abs/2609.11390) |
+| Geometric Gain Graph | Build links from existing vector representations without generating a graph with an LLM. MeetAI uses fixed projection neighborhoods, rare shared terms and cosine similarity to build its own sparse graph. [Paper](https://arxiv.org/abs/2609.19622) |
+| Ilya Rice, Enterprise RAG Challenge 3 | The implementation separates named context blocks from the text selected for a task. MeetAI selects discussion blocks and keeps retrieval diagnostics outside the generator input. [Context collection code](https://github.com/IlyaRice/Enterprise-RAG-Challenge-3-AI-Agents/blob/main/benchmarks/erc3/runtime/context.py) |
+| Local citation verifier | DeBERTa-v3-xsmall scores entailment, contradiction and neutrality on premise/claim pairs. The upstream model is Apache 2.0. The project pins the ONNX export, tokenizer and label mapping. [Model card](https://huggingface.co/cross-encoder/nli-deberta-v3-xsmall) · [ONNX export](https://huggingface.co/Xenova/nli-deberta-v3-xsmall) · [Pinned artifacts](configs/meetai-assets.json) |
+| Structured minutes | Pydantic validates record types and fields. llama.cpp constrains decoding to the JSON schema. Each populated owner and deadline gets its own supporting citations. [Pydantic](https://github.com/pydantic/pydantic) · [llama-cpp-python](https://github.com/abetlen/llama-cpp-python) |
