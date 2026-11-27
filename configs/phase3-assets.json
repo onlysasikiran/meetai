@@ -1,0 +1,18 @@
+{
+  "raw/Bed003.json": {
+    "sha256": "959b0a710628f786f64c35f1462717f234b03ba34f2e170d3bb13be72f3321f8",
+    "url": "https://raw.githubusercontent.com/Yale-LILY/QMSum/83d7768c1f2b4dfeb091385d3dc7e239b8e5bb7e/data/ALL/test/Bed003.json"
+  },
+  "raw/ES2004a.json": {
+    "sha256": "911e56db0d8482f1e730bae0a8fcf0ab0095c94abb000ba0516e975fa6e48b31",
+    "url": "https://raw.githubusercontent.com/Yale-LILY/QMSum/83d7768c1f2b4dfeb091385d3dc7e239b8e5bb7e/data/ALL/test/ES2004a.json"
+  },
+  "raw/Bmr006.json": {
+    "sha256": "0b1fb051ad319a0ff006970b86336425fc2ed987a3616bd07cf9a48c53bbfa69",
+    "url": "https://raw.githubusercontent.com/Yale-LILY/QMSum/83d7768c1f2b4dfeb091385d3dc7e239b8e5bb7e/data/ALL/test/Bmr006.json"
+  },
+  "raw/meetingbank-test.json": {
+    "sha256": "a26c61f1ac554e654bd4e439324a3a3caab5269050c8e378c1a4e615124e44bc",
+    "url": "https://huggingface.co/datasets/huuuyeah/MeetingBank/resolve/5b4fb6f67f490be93e249d70b732780932d19fe3/test.json?download=true"
+  }
+}

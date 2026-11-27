@@ -1,0 +1,13 @@
+{
+  "development": "Phase 1 tune roster only. Rotate variant evaluation order by question. A0 is frozen Phase 1. A1-A3 share turn reranking and chronological display. Each stage enables a new retrieval capability.",
+  "selection": "Among A4, compact (20 candidate turns instead of 36), windows (include neighboring utterances for fact/topic queries without facets or alias bridges), and their combination, retain candidates within 0.02 of the best equal-dataset mean evidence-group recall. Minimize mean delivered tokens, then turn pool, then prefer no windows. Measure each winning component independently. Hold semantic validation fixed in retrieval experiments.",
+  "heldout": {"ELITR-Bench": {"split": "English test2", "meetings": ["001","002","003"], "question_ids": [1,2]}, "QMSum": {"split":"test","meetings":["Bed003","Bmr006","ES2004a"],"specific_query_positions":[1]}, "MeetAI-Stress": {"seeds":[81037,24911],"cases_per_meeting":5}, "MeetingBank":{"split":"test","segments":["first","longest by transcript word count"]}},
+  "cold_passes": 2,
+  "warm_passes": 5,
+  "diagnostic_budgets": [2048,4096,8192],
+  "stress_targets": [5000,20000,50000,100000,250000,500000],
+  "separate_turns": 20000,
+  "bootstrap": {"unit":"meeting","stratify":"dataset","draws":5000,"seed":5800},
+  "development_generation_probe": ["el-001-3","qm-Bed004-2","stress-0-final","stress-0-gate"],
+  "complex_categories": ["temporal","topic-summary","multi-hop"]
+}

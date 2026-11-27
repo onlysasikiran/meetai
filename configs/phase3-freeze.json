@@ -1,0 +1,29 @@
+{
+  "frozen_at_utc": "2026-11-27T23:54:44.824482+00:00",
+  "base_commit": "a757327a82391773402626a3d5ea140d4de44612",
+  "winner": "compact-windows",
+  "files": {
+    "meetai/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "meetai/__main__.py": "436b4139a63c14a9bba7f5067f478ba51301f8f288e2e81142bf397bf5802c51",
+    "meetai/grounding.py": "8b9ed6832d7a73d40c0c8c8588fd4ec0ab478cda12e13c38c1f0200a40ac6c11",
+    "meetai/linked_index.py": "ef834c6266254a0576e927406913a15a22b9dc1edf6ff60154322b75d218202d",
+    "meetai/linked_retrieval.py": "8f54d13ee0a584b069f59bf38f94688904364132cabcb07e7aa259bca729ccd6",
+    "meetai/minutes.py": "7f878501f9724a5ef273669af024ea97c15865911c16fc2d12b96ce5a1db4a6e",
+    "meetai/models.py": "3851d11bd5569e69d7a5554fb7b833d756714293de63a7f10814669be6d89cad",
+    "meetai/pipeline.py": "12a64905a1b1889afbcadf640cb7e562095ccba9daf233e0b5545f118bd2b3b8",
+    "meetai/retrieval.py": "22725767e6c692104ec27325ba0cf79926754703fa9ed3bf6aec82a250b50e2b",
+    "meetai/text.py": "f628a1a6cb57cbf9c5c94cd336131960087c22922d689d37962e020e66eaaa54",
+    "configs/baseline.json": "adc8e71b37a557fe41d4412c969860fd0d260f0eda95256e67f13a066d482aa5",
+    "configs/meetai.json": "857171c9d61178f8d3cb094d3103f341602baa9427bf5caeff4c7a39d8fb8d44",
+    "configs/meetai-phase2.json": "d7633265869be18805cebfdb738960515fd2ab9d9426f0bd149c516afb4e365e",
+    "configs/phase3-protocol.json": "5eae461c7985fce0e092b44de62f51f1918ea41a15ae7f42a97f96aabea37fcd",
+    "configs/phase3-assets.json": "e522b4459d6ef4d4cefbf3c581a715735f19b392a325094e41d74232978e6eab",
+    "bench/phase3_dev.py": "246775206fbd1083f8f4ae9a536e1dc58a9011a280a850e85dff0e5e8a91acf1",
+    "bench/phase3_data.py": "bcfd6ee186fa29dd8b7b20674c47f7e14ceb85d18e92c8b45afe79f90c955b46",
+    "bench/phase3_run.py": "7ee717da7dd13d88213cd776ece86a9211c8f2029ee44a170aa7e0821ef4b6af",
+    "bench/phase3_scale.py": "424abe8dcb8eea9b08c2077f55da120aedaef5f23ee33988c3cb16a9c294ece7",
+    "bench/phase3_probe.py": "487a9d2bee53e0fdd3a4c7077f381b127be83bba2b914395af1d1426e045c9ca",
+    "bench/metrics.py": "ea6132405ab9f8041853d3dc6628f3b6af345343f1e70ec2f156af3f4f7774d4",
+    "bench/run.py": "187ba04c19e33cf22487cb486e453ebbf24255dc27be762872882e5ca08d7070"
+  }
+}
