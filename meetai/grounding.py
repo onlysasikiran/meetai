@@ -142,6 +142,8 @@ def validated_answer(raw, ids, index, models, cfg, question="", trace=None):
                 ).splitlines()
             )
     parsed = validate("\n".join(dict.fromkeys(lines)), set(ids))
+    if not cfg.get("semantic_validation", True):
+        return {**parsed, "validation": []}
     claims, checks = verify_claims(parsed["claims"], ids, index, models, cfg, question, trace)
     return {
         "claims": claims,

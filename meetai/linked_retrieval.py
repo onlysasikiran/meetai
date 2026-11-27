@@ -68,7 +68,11 @@ def retrieve(index, question, models, cfg):
     seeds = seeds[: cfg["top_k"]]
     facets = {key for key, pattern in FACETS.items() if pattern.search(question)}
     focus = index.focus(question)
-    bridges = index.bridges(focus)
+    hierarchy = cfg.get("hierarchy", True)
+    links = cfg.get("links", True)
+    adaptive = cfg.get("adaptive", True)
+    coverage = cfg.get("coverage", True)
+    bridges = index.bridges(focus) if links else []
     alias_names = {name for name, _ in bridges}
     seed_rows = [i for c in seeds for i in index.chunks[c]]
     query_terms = content_words(question)
@@ -98,23 +102,23 @@ def retrieve(index, question, models, cfg):
         route = "current"
     elif TOPIC.search(question):
         route = "topic"
-    expand = bool(gaps) or route != "fact" or len(facets) > 1
+    expand = not adaptive or bool(gaps) or route != "fact" or len(facets) > 1
     upper = cfg["budget"] if expand else min(cfg["simple_budget"], cfg["budget"])
     candidates = list(seeds)
     bridge_rows = []
     if expand:
         blocks = np.argsort(-(index.block_vectors @ vector), kind="stable")[:2]
         block_children = []
-        for b in blocks:
+        for b in blocks if hierarchy and adaptive else ():
             lo, hi = index.blocks[b]
             block_children.append(
                 sorted(range(lo, hi), key=lambda c: (-float(index.vectors[c] @ vector), c))
             )
         parent = []
-        for c in seeds:
+        for c in seeds if hierarchy else ():
             lo, hi = index.blocks[index.chunk_block[c]]
             parent.append(sorted(range(lo, hi), key=lambda j: (abs(c - j), j)))
-        neighbors = interleave(*[[j for j, _ in index.links[c]] for c in seeds])
+        neighbors = interleave(*[[j for j, _ in index.links[c]] for c in seeds]) if links else []
         bridge_rows = [i for _, i in bridges]
         linked = []
         for name in sorted(alias_names):
@@ -136,12 +140,15 @@ def retrieve(index, question, models, cfg):
         for i in index.chunks[c]:
             text = index.lines[i].text
             terms, entities = content_words(text), names(text)
-            if near_name(entities, focus) and not entities.intersection(alias_names):
+            if coverage and near_name(entities, focus) and not entities.intersection(alias_names):
                 continue
             matched = {f for f in facets if FACETS[f].search(text)}
             direct = bool(focus & entities)
             aliased = bool(alias_names & entities)
             weight = sum(idf[w] for w in terms & query_terms) / max(1, sum(idf.values()))
+            if not coverage:
+                info[i] = (weight, matched, direct, aliased)
+                continue
             weight += 0.42 * direct + 0.28 * aliased + 0.20 * len(matched)
             if route in {"current", "historical", "timeline"}:
                 if route != "historical":
@@ -162,71 +169,81 @@ def retrieve(index, question, models, cfg):
     times["turn_rerank_s"] = perf_counter() - start
     start = perf_counter()
     priority = []
-    if alias_names and "dependency" in facets:
-        priority.extend(i for i in shortlist if i in bridge_rows)
-    for f in sorted(facets):
-        pool = [i for i in shortlist if f in info[i][1]]
-        scoped = [i for i in pool if info[i][2] or info[i][3]]
-        pool = scoped or pool
-        if route in {"current", "timeline"}:
-            changes = [
-                i
-                for i in pool
-                if REVISION.search(index.lines[i].text)
-                and not DRAFT.search(index.lines[i].text)
-                and not HISTORY.search(index.lines[i].text)
-            ]
-            if changes:
-                priority.append(max(changes))
-        if pool:
-            priority.append(pool[0])
-    if focus and route != "topic":
-        scoped = [i for i in shortlist if info[i][2] or info[i][3]]
-        unscoped = [i for i in shortlist if i not in scoped]
-        if route == "current":
-            # Withhold an explicitly historical row only when its requested fields have
-            # later in-scope evidence. Keep unresolved parts of a partially revised plan.
-            resolved = {
-                f: max(
-                    (
-                        index.lines[j].turn
-                        for j in scoped
-                        if f in info[j][1]
-                        and REVISION.search(index.lines[j].text)
-                        and not DRAFT.search(index.lines[j].text)
-                        and not HISTORY.search(index.lines[j].text)
-                    ),
-                    default=0,
-                )
-                for f in facets
-            }
-            scoped = [
-                i
-                for i in scoped
-                if not (
-                    HISTORY.search(index.lines[i].text)
-                    and info[i][1]
-                    and all(resolved[f] > index.lines[i].turn for f in info[i][1])
-                )
-            ]
-        if scoped:
-            priority = [i for i in priority if i in scoped]
-            relevant = [i for i in scoped if info[i][1] or i in bridge_rows]
-            if "linked_reference" in gaps:
-                relevant = [i for i in relevant if i in bridge_rows or "dependency" in info[i][1]]
-            anchors = relevant or scoped
-            adjacent = [i for i in unscoped if any(abs(i - j) == 1 for j in anchors)]
-            shortlist = anchors + adjacent[:2]
-    if route == "topic":
-        by_block = {}
-        for i in shortlist:
-            by_block.setdefault(index.chunk_block[index.line_chunk[i]], []).append(i)
-        priority += interleave(*by_block.values())
+    if not coverage:
+        priority = shortlist
+        cap = len(shortlist) if route == "topic" else (12 if expand else 4)
     else:
-        priority += shortlist
-    # Stop once the requested local evidence is covered. Broad topic queries may use the full shortlist.
-    cap = len(shortlist) if route == "topic" else (12 if expand else 4)
+        if alias_names and "dependency" in facets:
+            priority.extend(i for i in shortlist if i in bridge_rows)
+        for f in sorted(facets):
+            pool = [i for i in shortlist if f in info[i][1]]
+            scoped = [i for i in pool if info[i][2] or info[i][3]]
+            pool = scoped or pool
+            if route in {"current", "timeline"}:
+                changes = [
+                    i
+                    for i in pool
+                    if REVISION.search(index.lines[i].text)
+                    and not DRAFT.search(index.lines[i].text)
+                    and not HISTORY.search(index.lines[i].text)
+                ]
+                if changes:
+                    priority.append(max(changes))
+            if pool:
+                priority.append(pool[0])
+        if focus and route != "topic":
+            scoped = [i for i in shortlist if info[i][2] or info[i][3]]
+            unscoped = [i for i in shortlist if i not in scoped]
+            if route == "current":
+                # Withhold an explicitly historical row only when its requested fields have
+                # later in-scope evidence. Keep unresolved parts of a partially revised plan.
+                resolved = {
+                    f: max(
+                        (
+                            index.lines[j].turn
+                            for j in scoped
+                            if f in info[j][1]
+                            and REVISION.search(index.lines[j].text)
+                            and not DRAFT.search(index.lines[j].text)
+                            and not HISTORY.search(index.lines[j].text)
+                        ),
+                        default=0,
+                    )
+                    for f in facets
+                }
+                scoped = [
+                    i
+                    for i in scoped
+                    if not (
+                        HISTORY.search(index.lines[i].text)
+                        and info[i][1]
+                        and all(resolved[f] > index.lines[i].turn for f in info[i][1])
+                    )
+                ]
+            if scoped:
+                priority = [i for i in priority if i in scoped]
+                relevant = [i for i in scoped if info[i][1] or i in bridge_rows]
+                if "linked_reference" in gaps:
+                    relevant = [i for i in relevant if i in bridge_rows or "dependency" in info[i][1]]
+                anchors = relevant or scoped
+                adjacent = [i for i in unscoped if any(abs(i - j) == 1 for j in anchors)]
+                shortlist = anchors + adjacent[:2]
+        if route == "topic" and hierarchy:
+            by_block = {}
+            for i in shortlist:
+                by_block.setdefault(index.chunk_block[index.line_chunk[i]], []).append(i)
+            priority += interleave(*by_block.values())
+        else:
+            priority += shortlist
+        # Stop once the requested local evidence is covered. Broad topic queries may use the full shortlist.
+        cap = len(shortlist) if route == "topic" else (12 if expand else 4)
     choices = list(dict.fromkeys(priority))[:cap]
+    if cfg.get("dialogue_windows", False) and route in {"fact", "topic"} and not facets and not bridges:
+        # Conversational answers often refer to the preceding or following speaker.
+        # Keep groups local while preserving the original turn ID on every line.
+        choices = list(dict.fromkeys(
+            j for i in choices for j in (i, i + 1, i - 1) if 0 <= j < len(index.lines)
+        ))
     rows = pack_rows(index, choices, models, upper)
     context = "\n".join(index.lines[i].render() for i in rows)
     trace = {
