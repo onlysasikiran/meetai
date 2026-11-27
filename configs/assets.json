@@ -1,0 +1,50 @@
+{
+  "models/bge/model.onnx": {
+    "sha256": "6c9c6101a956d62dfb5e7190c538226c0c5bb9cb27b651234b6df063ee7dbfe4",
+    "url": "https://huggingface.co/Xenova/bge-small-en-v1.5/resolve/ea104dacec62c0de699686887e3f920caeb4f3e3/onnx/model_quantized.onnx?download=true"
+  },
+  "models/bge/tokenizer.json": {
+    "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+    "url": "https://huggingface.co/Xenova/bge-small-en-v1.5/resolve/ea104dacec62c0de699686887e3f920caeb4f3e3/tokenizer.json?download=true"
+  },
+  "models/qwen.gguf": {
+    "sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+    "url": "https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/bc640142c66e1fdd12af0bd68f40445458f3869b/Qwen3-4B-Q4_K_M.gguf?download=true"
+  },
+  "models/rerank/model.onnx": {
+    "sha256": "e9d8ebf845c413e981c175bfe49a3bfa9b3dcce2a3ba54875ee5df5a58639fbe",
+    "url": "https://huggingface.co/Xenova/ms-marco-MiniLM-L-6-v2/resolve/a09144355adeed5f58c8ed011d209bf8ee5a1fec/onnx/model_quantized.onnx?download=true"
+  },
+  "models/rerank/tokenizer.json": {
+    "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+    "url": "https://huggingface.co/Xenova/ms-marco-MiniLM-L-6-v2/resolve/a09144355adeed5f58c8ed011d209bf8ee5a1fec/tokenizer.json?download=true"
+  },
+  "raw/Bed002.json": {
+    "sha256": "bb2892b5df74d283936a75368acf843b17c24256a7d3286e6e6599566ce87672",
+    "url": "https://raw.githubusercontent.com/Yale-LILY/QMSum/83d7768c1f2b4dfeb091385d3dc7e239b8e5bb7e/data/ALL/val/Bed002.json"
+  },
+  "raw/Bed004.json": {
+    "sha256": "5701b0fe18d2b5992ff013bf0fa9a5320f2c0cbb6cc643ca7a3adada07ddfbb6",
+    "url": "https://raw.githubusercontent.com/Yale-LILY/QMSum/83d7768c1f2b4dfeb091385d3dc7e239b8e5bb7e/data/ALL/train/Bed004.json"
+  },
+  "raw/Bmr005.json": {
+    "sha256": "bd6ebed66ccccd5fdebeee4cbbc0558a2025dbb2ac24dba270cae95982d700b8",
+    "url": "https://raw.githubusercontent.com/Yale-LILY/QMSum/83d7768c1f2b4dfeb091385d3dc7e239b8e5bb7e/data/ALL/val/Bmr005.json"
+  },
+  "raw/ES2002a.json": {
+    "sha256": "26b4fa0a06177bc69c1aa407b7087fd9d55571c43b2231b591026fff316f3e08",
+    "url": "https://raw.githubusercontent.com/Yale-LILY/QMSum/83d7768c1f2b4dfeb091385d3dc7e239b8e5bb7e/data/ALL/train/ES2002a.json"
+  },
+  "raw/elcorpus.zip": {
+    "sha256": "34868d54a983b46841c8a8c14153d48c913f40bd92e37b23a85f628be737cbe1",
+    "url": "https://lindat.mff.cuni.cz/repository/xmlui/bitstream/handle/11234/1-4692/ELITR-minuting-corpus.zip"
+  },
+  "raw/elqa.zip": {
+    "sha256": "0ae6e9ffe0cefd3079011154f5890176ad01feb0bf810ac16fc48b201c11e536",
+    "url": "https://raw.githubusercontent.com/utter-project/ELITR-Bench/83649521b016e78b6293ceaf2585ea96f2ed9162/data.zip"
+  },
+  "raw/meetingbank.json": {
+    "sha256": "efd90b86345fe7d75d44502ae394d352e977956b2a3983df11ea8a25cd78bf99",
+    "url": "https://huggingface.co/datasets/huuuyeah/MeetingBank/resolve/5b4fb6f67f490be93e249d70b732780932d19fe3/validation.json?download=true"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "base": {
+    "asset_id": "1f6d4891f9ddddf4f18389cada44c24c67e1d4a4f3ec04aa0788c9f34da90526",
+    "pipeline_version": 1,
+    "threads": 6,
+    "window": 4096,
+    "max_output": 120,
+    "rrf_k": 60,
+    "pool": 12,
+    "chunk_tokens": 128,
+    "parent_chunks": 2,
+    "top_k": 4,
+    "budget": 1024
+  },
+  "chunk_sizes": [
+    96,
+    160
+  ],
+  "parent_sizes": [
+    1,
+    2
+  ],
+  "top_ks": [
+    3,
+    6
+  ],
+  "budgets": [
+    512,
+    1024,
+    2048
+  ],
+  "selection": "Macro-average evidence-group recall across datasets, then choose the smallest budget within 0.02 of the maximum. Within that budget maximize recall, then minimize mean delivered tokens, parent size, top-k and chunk size in that order.",
+  "diagnostic_budgets": [
+    2048,
+    4096,
+    8192
+  ]
+}

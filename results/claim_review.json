@@ -1,0 +1,340 @@
+{
+  "el-002-4": {
+    "digest": "ffefea0da99b2503afb54752aea96969c1546b5061b6845fd7c8cd1ca32564d4",
+    "atoms": [
+      [
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "reason": "The chosen option agrees with the reference. The cited line is conditional. The later explicit preference supplies the support."
+  },
+  "el-002-5": {
+    "digest": "1fb03e26efcba1431ab383144ee449e9bf620a74183807bbbeb1565f3535ab81",
+    "atoms": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "reason": "The leading personal identifier gives an incorrect competing target. The intended viewer and the two presentation capabilities are supported elsewhere. The cited line is about translation quality."
+  },
+  "el-002-6": {
+    "digest": "61ef890c430cfcdf745efe7f83b6c6fe3ecc4cf27afa21818c1e22497b8350aa",
+    "atoms": [
+      [
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "reason": "A speaker is substituted for the provider. The cited acknowledgement establishes neither identity nor provision."
+  },
+  "el-002-8": {
+    "digest": "cf4c29070f7df266dbadc312e5a9fa59229998340da1db58e0ac7070777d8179",
+    "atoms": [
+      [
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "reason": "The named presenter is speaking about their own plan in the cited line."
+  },
+  "el-004-2": {
+    "digest": "f4908f86723d4d940d3909a4bbddd9687f3f5ee0603094467fe83511ba35be65",
+    "atoms": [
+      [
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "reason": "The proposed author matches the reference. Adapting previous material in the cited line is weaker than the explicit writing commitment elsewhere."
+  },
+  "el-004-3": {
+    "digest": "9322521f76c8644cfa7e4e4a04b4e46bcfbc0e3f7ee315acb2103da6f2529836",
+    "atoms": [
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "reason": "The calendar date is correct. Deletion of meetings starting the following year is a separate source-true detail. Verbal acknowledgements and incomplete fragments carry no independently checkable fact."
+  },
+  "el-004-5": {
+    "digest": "936b396b03370081b116d64eae70cf242e18cbf4063b7157b92b6b4b044fad14",
+    "atoms": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "reason": "The answer presents a debated attribution style as the final choice. Concern about the appearance of authority is supported by the cited exchange."
+  },
+  "el-004-7": {
+    "digest": "74697c70a34c790018e392928f7e4814363e108b4c65b773a85dcd04f177322d",
+    "atoms": [
+      [
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "reason": "A first-person commitment with speaker attribution directly supports the named owner."
+  },
+  "qm-Bed002-2": {
+    "digest": "4c99f9fc21ef85a678cb779bfd71b3dd7a9a9f1c66adec847668c539b33f4053",
+    "atoms": [
+      [
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "reason": "Room selection, approximate start time and using the effort to obtain data are source-true. Only room selection is in the cited line. These concern a later discussion and miss the reference units."
+  },
+  "qm-Bed002-3": {
+    "digest": "85b7db345a5584e6c92ff971f7b05ba89921bba8659ba7950bfe599d33013584",
+    "atoms": [
+      [
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "reason": "Room instrumentation for data collection, quality of audio and near/far comparison appear later in the full utterance. The cited fragment ends before those details. The reply omits the five specified reference units."
+  },
+  "qm-Bmr005-3": {
+    "digest": "abc7fbdfda20b9a4f701f7ceb29dd1a47accc10484441cda6a71bec34f8455cf",
+    "atoms": [
+      [
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "reason": "Existing recordings and the possibility of more sessions are source-true. The blanket statement that transcriptions are unavailable overlooks already transcribed data. Uncertainty about future delivery is supported. A generic plan for more sessions omits the other-group detail."
+  },
+  "qm-Bmr005-4": {
+    "digest": "08b29d8e829c54286542bd27969d2f10af62cb6c3ceba570eee482b2331374d4",
+    "atoms": [
+      [
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "reason": "Reusing existing data, the proposed assisted review, refining overlap labels and an extra pass are sourced. These details do not cover the target collection and consent facts. The unfinished tail adds no claim."
+  },
+  "stress-2-original": {
+    "digest": "b5a1417e18439db27be6f594e4f7afa43fbc760e7de0ca3016a99412e3508d08",
+    "atoms": [
+      [
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "reason": "Original owner and cited original assignment agree."
+  },
+  "stress-2-owner": {
+    "digest": "ec988785bed37c87a1166090d2b93ceea3b77efe09c5dcd85278d1d77bb028ee",
+    "atoms": [
+      [
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "reason": "The cited handover explicitly names the new owner."
+  },
+  "stress-2-final": {
+    "digest": "b459e1dd44b23ab27287e755c29593c8c54f8a162f2cdbab68402a74824579a1",
+    "atoms": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        1,
+        0
+      ]
+    ],
+    "reason": "The former owner is presented as current. The date matches the amendment, but neither cited line establishes it."
+  },
+  "stress-2-gate": {
+    "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "atoms": [],
+    "reason": "Abstained on an answerable two-hop question."
+  },
+  "stress-2-missing": {
+    "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "atoms": [],
+    "reason": "Correct abstention. The scenario defines no insurance amount."
+  },
+  "stress-3-original": {
+    "digest": "9abdec4193695e4e3d921c45279fed9033a42b8ed8b0875cd2795ca70221fe90",
+    "atoms": [
+      [
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "reason": "The original assignment directly supports the answer."
+  },
+  "stress-3-owner": {
+    "digest": "e8a6246947dce265688151e46976033c6d216f976b43bec540da8a3337d045cf",
+    "atoms": [
+      [
+        1,
+        1,
+        1,
+        0
+      ]
+    ],
+    "reason": "The answer agrees with the handover. Its cited line is an unrelated calibration update."
+  },
+  "stress-3-final": {
+    "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "atoms": [],
+    "reason": "The validated response abstained on a two-field answerable query."
+  },
+  "stress-3-gate": {
+    "digest": "5832b3b901785b5358512ae2fbd65b614b8d6468ecfa9047d19a95022f5cff89",
+    "atoms": [
+      [
+        1,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        1
+      ]
+    ],
+    "reason": "Both statements explicitly describe the similarly named separate project. They are true of that project and directly cited, but answer neither the requested entity nor its gate."
+  },
+  "stress-3-missing": {
+    "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "atoms": [],
+    "reason": "Correct abstention. There is no insurance amount in the scenario."
+  }
+}

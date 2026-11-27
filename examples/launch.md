@@ -1,0 +1,6 @@
+# Launch review
+
+**Mara:** The initial launch owner was Dev and the release was planned for June 4.
+**Dev:** Packaging is ready for review.
+**Mara:** We have approved the handover. Priya is now the launch owner.
+**Priya:** The approved launch date is July 15.

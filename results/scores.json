@@ -1,0 +1,389 @@
+{
+  "dataset": {
+    "ELITR-Bench": {
+      "questions": 8,
+      "answer_correctness": 0.6333333333333333,
+      "evidence_recall": 0.625,
+      "evidence_questions": 8,
+      "unsupported_claim_rate": 0.23076923076923078,
+      "unsupported": 3,
+      "atomic_claims": 13,
+      "citation_support_rate": 0.38461538461538464,
+      "answered": 8,
+      "cold_p95_s": 28.438709489999837,
+      "warm_p95_s": 0.00016079200008789485,
+      "meetings_or_segments": 2,
+      "ingested_tokens": 31256,
+      "ingestion_tokens_s": 6561.274551209932
+    },
+    "QMSum": {
+      "questions": 4,
+      "answer_correctness": 0.0,
+      "evidence_recall": 0.0625,
+      "evidence_questions": 4,
+      "unsupported_claim_rate": 0.07142857142857142,
+      "unsupported": 1,
+      "atomic_claims": 14,
+      "citation_support_rate": 0.5,
+      "answered": 4,
+      "cold_p95_s": 25.284788648999893,
+      "warm_p95_s": 0.00014062099990042043,
+      "meetings_or_segments": 2,
+      "ingested_tokens": 44618,
+      "ingestion_tokens_s": 6858.399967868628
+    },
+    "MeetAI-Stress": {
+      "questions": 10,
+      "answer_correctness": 0.65,
+      "evidence_recall": 0.875,
+      "evidence_questions": 8,
+      "unsupported_claim_rate": 0.125,
+      "unsupported": 1,
+      "atomic_claims": 8,
+      "citation_support_rate": 0.625,
+      "answered": 6,
+      "cold_p95_s": 18.214025570000103,
+      "warm_p95_s": 0.0002706469999793626,
+      "meetings_or_segments": 2,
+      "ingested_tokens": 28727,
+      "ingestion_tokens_s": 8628.665795226554
+    },
+    "MeetingBank": {
+      "meetings_or_segments": 2,
+      "ingested_tokens": 85436,
+      "ingestion_tokens_s": 7605.648312909349
+    }
+  },
+  "by_category": {
+    "ELITR-Bench/simple": {
+      "questions": 6,
+      "answer_correctness": 0.5666666666666667,
+      "evidence_recall": 0.8333333333333334,
+      "evidence_questions": 6,
+      "unsupported_claim_rate": 0.3,
+      "unsupported": 3,
+      "atomic_claims": 10,
+      "citation_support_rate": 0.3,
+      "answered": 6,
+      "cold_p95_s": 21.14485158200023,
+      "warm_p95_s": 0.00016599900027358672
+    },
+    "ELITR-Bench/temporal": {
+      "questions": 2,
+      "answer_correctness": 0.8333333333333333,
+      "evidence_recall": 0.0,
+      "evidence_questions": 2,
+      "unsupported_claim_rate": 0.0,
+      "unsupported": 0,
+      "atomic_claims": 3,
+      "citation_support_rate": 0.6666666666666666,
+      "answered": 2,
+      "cold_p95_s": 28.438709489999837,
+      "warm_p95_s": 0.00015403199995489558
+    },
+    "MeetAI-Stress/multi-hop": {
+      "questions": 2,
+      "answer_correctness": 0.0,
+      "evidence_recall": 0.5,
+      "evidence_questions": 2,
+      "unsupported_claim_rate": 0.0,
+      "unsupported": 0,
+      "atomic_claims": 2,
+      "citation_support_rate": 1.0,
+      "answered": 1,
+      "cold_p95_s": 17.843221653,
+      "warm_p95_s": 0.0001449180003874062
+    },
+    "MeetAI-Stress/simple": {
+      "questions": 2,
+      "answer_correctness": 1.0,
+      "evidence_recall": 1.0,
+      "evidence_questions": 2,
+      "unsupported_claim_rate": 0.0,
+      "unsupported": 0,
+      "atomic_claims": 2,
+      "citation_support_rate": 1.0,
+      "answered": 2,
+      "cold_p95_s": 17.54354814999988,
+      "warm_p95_s": 0.0002539209999667946
+    },
+    "MeetAI-Stress/temporal": {
+      "questions": 4,
+      "answer_correctness": 0.625,
+      "evidence_recall": 1.0,
+      "evidence_questions": 4,
+      "unsupported_claim_rate": 0.25,
+      "unsupported": 1,
+      "atomic_claims": 4,
+      "citation_support_rate": 0.25,
+      "answered": 3,
+      "cold_p95_s": 19.665513242000088,
+      "warm_p95_s": 0.0002706469999793626
+    },
+    "MeetAI-Stress/unanswerable": {
+      "questions": 2,
+      "answer_correctness": 1.0,
+      "evidence_recall": null,
+      "evidence_questions": 0,
+      "unsupported_claim_rate": null,
+      "unsupported": 0,
+      "atomic_claims": 0,
+      "citation_support_rate": null,
+      "answered": 0,
+      "cold_p95_s": 15.369744276000347,
+      "warm_p95_s": 0.00037588400027743774
+    },
+    "QMSum/topic-summary": {
+      "questions": 4,
+      "answer_correctness": 0.0,
+      "evidence_recall": 0.0625,
+      "evidence_questions": 4,
+      "unsupported_claim_rate": 0.07142857142857142,
+      "unsupported": 1,
+      "atomic_claims": 14,
+      "citation_support_rate": 0.5,
+      "answered": 4,
+      "cold_p95_s": 25.284788648999893,
+      "warm_p95_s": 0.00014062099990042043
+    }
+  },
+  "budget_sweep": [
+    {
+      "dataset": "ELITR-Bench",
+      "budget": 2048,
+      "queries": 8,
+      "mean_recall": 0.625,
+      "mean_used_tokens": 892
+    },
+    {
+      "dataset": "ELITR-Bench",
+      "budget": 4096,
+      "queries": 8,
+      "mean_recall": 0.625,
+      "mean_used_tokens": 892
+    },
+    {
+      "dataset": "ELITR-Bench",
+      "budget": 8192,
+      "queries": 8,
+      "mean_recall": 0.625,
+      "mean_used_tokens": 892
+    },
+    {
+      "dataset": "MeetAI-Stress",
+      "budget": 2048,
+      "queries": 8,
+      "mean_recall": 0.875,
+      "mean_used_tokens": 873.25
+    },
+    {
+      "dataset": "MeetAI-Stress",
+      "budget": 4096,
+      "queries": 8,
+      "mean_recall": 0.875,
+      "mean_used_tokens": 873.25
+    },
+    {
+      "dataset": "MeetAI-Stress",
+      "budget": 8192,
+      "queries": 8,
+      "mean_recall": 0.875,
+      "mean_used_tokens": 873.25
+    },
+    {
+      "dataset": "QMSum",
+      "budget": 2048,
+      "queries": 4,
+      "mean_recall": 0.0625,
+      "mean_used_tokens": 786
+    },
+    {
+      "dataset": "QMSum",
+      "budget": 4096,
+      "queries": 4,
+      "mean_recall": 0.0625,
+      "mean_used_tokens": 786
+    },
+    {
+      "dataset": "QMSum",
+      "budget": 8192,
+      "queries": 4,
+      "mean_recall": 0.0625,
+      "mean_used_tokens": 786
+    }
+  ],
+  "performance": {
+    "cold_queries": 44,
+    "warm_queries": 110,
+    "cold_p50_s": 17.54354814999988,
+    "cold_p95_s": 25.284788648999893,
+    "warm_p50_s": 2.0740999843837926e-05,
+    "warm_p95_s": 0.00016599900027358672,
+    "model_startup_s": 8.184693676000052,
+    "peak_rss_mib": 5117.1796875,
+    "mean_first_pass_stage_s": {
+      "retrieval_s": 0.008925131136379605,
+      "rerank_s": 0.08893759518181552,
+      "assembly_s": 0.014422406409080808,
+      "generation_s": 17.833681607136306,
+      "validation_s": 0.00036193222727185707,
+      "total_s": 17.949873637090864
+    }
+  },
+  "answers": {
+    "el-002-4": {
+      "correctness": 1.0,
+      "atom_count": 1,
+      "unsupported": 0,
+      "citations_supported": 0,
+      "matched": 1
+    },
+    "el-002-5": {
+      "correctness": 0.4,
+      "atom_count": 4,
+      "unsupported": 1,
+      "citations_supported": 0,
+      "matched": 1
+    },
+    "el-002-6": {
+      "correctness": 0.0,
+      "atom_count": 1,
+      "unsupported": 1,
+      "citations_supported": 0,
+      "matched": 0
+    },
+    "el-002-8": {
+      "correctness": 1.0,
+      "atom_count": 1,
+      "unsupported": 0,
+      "citations_supported": 1,
+      "matched": 1
+    },
+    "el-004-2": {
+      "correctness": 1.0,
+      "atom_count": 1,
+      "unsupported": 0,
+      "citations_supported": 0,
+      "matched": 1
+    },
+    "el-004-3": {
+      "correctness": 0.6666666666666666,
+      "atom_count": 2,
+      "unsupported": 0,
+      "citations_supported": 2,
+      "matched": 1
+    },
+    "el-004-5": {
+      "correctness": 0.0,
+      "atom_count": 2,
+      "unsupported": 1,
+      "citations_supported": 1,
+      "matched": 0
+    },
+    "el-004-7": {
+      "correctness": 1.0,
+      "atom_count": 1,
+      "unsupported": 0,
+      "citations_supported": 1,
+      "matched": 1
+    },
+    "qm-Bed002-2": {
+      "correctness": 0.0,
+      "atom_count": 3,
+      "unsupported": 0,
+      "citations_supported": 1,
+      "matched": 0
+    },
+    "qm-Bed002-3": {
+      "correctness": 0.0,
+      "atom_count": 3,
+      "unsupported": 0,
+      "citations_supported": 0,
+      "matched": 0
+    },
+    "qm-Bmr005-3": {
+      "correctness": 0.0,
+      "atom_count": 4,
+      "unsupported": 1,
+      "citations_supported": 2,
+      "matched": 0
+    },
+    "qm-Bmr005-4": {
+      "correctness": 0.0,
+      "atom_count": 4,
+      "unsupported": 0,
+      "citations_supported": 4,
+      "matched": 0
+    },
+    "stress-2-original": {
+      "correctness": 1.0,
+      "atom_count": 1,
+      "unsupported": 0,
+      "citations_supported": 1,
+      "matched": 1
+    },
+    "stress-2-owner": {
+      "correctness": 1.0,
+      "atom_count": 1,
+      "unsupported": 0,
+      "citations_supported": 1,
+      "matched": 1
+    },
+    "stress-2-final": {
+      "correctness": 0.5,
+      "atom_count": 2,
+      "unsupported": 1,
+      "citations_supported": 0,
+      "matched": 1
+    },
+    "stress-2-gate": {
+      "correctness": 0.0,
+      "atom_count": 0,
+      "unsupported": 0,
+      "citations_supported": 0,
+      "matched": 0
+    },
+    "stress-2-missing": {
+      "correctness": 1.0,
+      "atom_count": 0,
+      "unsupported": 0,
+      "citations_supported": 0,
+      "matched": 0
+    },
+    "stress-3-original": {
+      "correctness": 1.0,
+      "atom_count": 1,
+      "unsupported": 0,
+      "citations_supported": 1,
+      "matched": 1
+    },
+    "stress-3-owner": {
+      "correctness": 1.0,
+      "atom_count": 1,
+      "unsupported": 0,
+      "citations_supported": 0,
+      "matched": 1
+    },
+    "stress-3-final": {
+      "correctness": 0.0,
+      "atom_count": 0,
+      "unsupported": 0,
+      "citations_supported": 0,
+      "matched": 0
+    },
+    "stress-3-gate": {
+      "correctness": 0.0,
+      "atom_count": 2,
+      "unsupported": 0,
+      "citations_supported": 2,
+      "matched": 0
+    },
+    "stress-3-missing": {
+      "correctness": 1.0,
+      "atom_count": 0,
+      "unsupported": 0,
+      "citations_supported": 0,
+      "matched": 0
+    }
+  }
+}

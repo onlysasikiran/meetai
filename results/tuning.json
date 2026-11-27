@@ -1,0 +1,354 @@
+{
+  "winner": {
+    "chunk_tokens": 160,
+    "parent_chunks": 2,
+    "top_k": 3,
+    "budget": 1024,
+    "mean_recall": 0.7041666666666667,
+    "recall_by_dataset": {
+      "ELITR-Bench": 0.375,
+      "QMSum": 0.8,
+      "MeetAI-Stress": 0.9375
+    },
+    "mean_tokens": 835,
+    "eligible_questions": 21
+  },
+  "trials": [
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 1,
+      "top_k": 3,
+      "budget": 512,
+      "mean_recall": 0.41944444444444445,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.25,
+        "QMSum": 0.13333333333333333,
+        "MeetAI-Stress": 0.875
+      },
+      "mean_tokens": 252.38095238095238,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 1,
+      "top_k": 3,
+      "budget": 1024,
+      "mean_recall": 0.41944444444444445,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.25,
+        "QMSum": 0.13333333333333333,
+        "MeetAI-Stress": 0.875
+      },
+      "mean_tokens": 252.38095238095238,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 1,
+      "top_k": 3,
+      "budget": 2048,
+      "mean_recall": 0.41944444444444445,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.25,
+        "QMSum": 0.13333333333333333,
+        "MeetAI-Stress": 0.875
+      },
+      "mean_tokens": 252.38095238095238,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 1,
+      "top_k": 6,
+      "budget": 512,
+      "mean_recall": 0.5041666666666667,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.19999999999999998,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 487.76190476190476,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 1,
+      "top_k": 6,
+      "budget": 1024,
+      "mean_recall": 0.5041666666666667,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.19999999999999998,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 499.85714285714283,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 1,
+      "top_k": 6,
+      "budget": 2048,
+      "mean_recall": 0.5041666666666667,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.19999999999999998,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 499.85714285714283,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 2,
+      "top_k": 3,
+      "budget": 512,
+      "mean_recall": 0.4638888888888889,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.25,
+        "QMSum": 0.26666666666666666,
+        "MeetAI-Stress": 0.875
+      },
+      "mean_tokens": 462.0952380952381,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 2,
+      "top_k": 3,
+      "budget": 1024,
+      "mean_recall": 0.4638888888888889,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.25,
+        "QMSum": 0.26666666666666666,
+        "MeetAI-Stress": 0.875
+      },
+      "mean_tokens": 469.8095238095238,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 2,
+      "top_k": 3,
+      "budget": 2048,
+      "mean_recall": 0.4638888888888889,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.25,
+        "QMSum": 0.26666666666666666,
+        "MeetAI-Stress": 0.875
+      },
+      "mean_tokens": 469.8095238095238,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 2,
+      "top_k": 6,
+      "budget": 512,
+      "mean_recall": 0.5069444444444444,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.25,
+        "QMSum": 0.3333333333333333,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 506.23809523809524,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 2,
+      "top_k": 6,
+      "budget": 1024,
+      "mean_recall": 0.5486111111111112,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.3333333333333333,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 940,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 96,
+      "parent_chunks": 2,
+      "top_k": 6,
+      "budget": 2048,
+      "mean_recall": 0.5902777777777778,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.5,
+        "QMSum": 0.3333333333333333,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 949.2380952380952,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 1,
+      "top_k": 3,
+      "budget": 512,
+      "mean_recall": 0.5597222222222222,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.36666666666666664,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 447.57142857142856,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 1,
+      "top_k": 3,
+      "budget": 1024,
+      "mean_recall": 0.5597222222222222,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.36666666666666664,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 447.57142857142856,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 1,
+      "top_k": 3,
+      "budget": 2048,
+      "mean_recall": 0.5597222222222222,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.36666666666666664,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 447.57142857142856,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 1,
+      "top_k": 6,
+      "budget": 512,
+      "mean_recall": 0.5597222222222222,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.36666666666666664,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 504.6666666666667,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 1,
+      "top_k": 6,
+      "budget": 1024,
+      "mean_recall": 0.6041666666666666,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.5,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 874.2380952380952,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 1,
+      "top_k": 6,
+      "budget": 2048,
+      "mean_recall": 0.6041666666666666,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.5,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 874.2380952380952,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 2,
+      "top_k": 3,
+      "budget": 512,
+      "mean_recall": 0.5180555555555555,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.36666666666666664,
+        "MeetAI-Stress": 0.8125
+      },
+      "mean_tokens": 505.8095238095238,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 2,
+      "top_k": 3,
+      "budget": 1024,
+      "mean_recall": 0.7041666666666667,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.8,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 835,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 2,
+      "top_k": 3,
+      "budget": 2048,
+      "mean_recall": 0.7041666666666667,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.8,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 835,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 2,
+      "top_k": 6,
+      "budget": 512,
+      "mean_recall": 0.5180555555555555,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.36666666666666664,
+        "MeetAI-Stress": 0.8125
+      },
+      "mean_tokens": 508.4761904761905,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 2,
+      "top_k": 6,
+      "budget": 1024,
+      "mean_recall": 0.7041666666666667,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.8,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 1018.1428571428571,
+      "eligible_questions": 21
+    },
+    {
+      "chunk_tokens": 160,
+      "parent_chunks": 2,
+      "top_k": 6,
+      "budget": 2048,
+      "mean_recall": 0.7041666666666667,
+      "recall_by_dataset": {
+        "ELITR-Bench": 0.375,
+        "QMSum": 0.8,
+        "MeetAI-Stress": 0.9375
+      },
+      "mean_tokens": 1645.095238095238,
+      "eligible_questions": 21
+    }
+  ]
+}

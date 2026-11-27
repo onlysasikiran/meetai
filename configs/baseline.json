@@ -1,0 +1,13 @@
+{
+  "asset_id": "1f6d4891f9ddddf4f18389cada44c24c67e1d4a4f3ec04aa0788c9f34da90526",
+  "pipeline_version": 1,
+  "threads": 6,
+  "window": 4096,
+  "max_output": 120,
+  "rrf_k": 60,
+  "pool": 12,
+  "chunk_tokens": 160,
+  "parent_chunks": 2,
+  "top_k": 3,
+  "budget": 1024
+}

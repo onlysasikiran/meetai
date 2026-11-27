@@ -1,0 +1,33 @@
+{
+  "config_sha256": "adc8e71b37a557fe41d4412c969860fd0d260f0eda95256e67f13a066d482aa5",
+  "contexts_rebuilt": 22,
+  "matching_predictions_on_cold_repeat": 22,
+  "deterministic_exact_answers": [
+    "el-002-4",
+    "el-002-8",
+    "el-004-2",
+    "stress-2-original",
+    "stress-3-original",
+    "stress-3-owner"
+  ],
+  "deterministic_abstentions": [
+    "stress-2-gate",
+    "stress-2-missing",
+    "stress-3-final",
+    "stress-3-missing"
+  ],
+  "other_answers_scored_by_claim_review": [
+    "el-002-5",
+    "el-002-6",
+    "el-004-3",
+    "el-004-5",
+    "el-004-7",
+    "qm-Bed002-2",
+    "qm-Bed002-3",
+    "qm-Bmr005-3",
+    "qm-Bmr005-4",
+    "stress-2-owner",
+    "stress-2-final",
+    "stress-3-gate"
+  ]
+}
