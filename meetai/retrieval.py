@@ -48,10 +48,16 @@ class Index:
 
     @classmethod
     def build(cls, path, models, cfg, cache=None):
+        if cls is Index and cfg.get("system") == "meetai":
+            from .linked_index import LinkedIndex
+
+            return LinkedIndex.build(path, models, cfg, cache)
         start = perf_counter()
         raw = path.read_bytes()
+        timed = cfg.get("system") == "meetai"
         key = digest(
             raw
+            + (b"timestamp-parser-v1" if timed else b"")
             + repr(
                 (path.suffix.lower(), cfg["chunk_tokens"], cfg["asset_id"], cfg["pipeline_version"])
             ).encode()
@@ -71,8 +77,8 @@ class Index:
             )
             count = meta["tokens"]
         else:
-            turns = read_turns(path)
-            count = len(models.tokens("\n".join(f"{s}: {t}" for s, t in turns)))
+            turns = read_turns(path, timestamps=timed)
+            count = len(models.tokens("\n".join(f"{s}: {t}" for s, t, *_ in turns)))
             lines = split_turns(turns, models.tokens, max(24, cfg["chunk_tokens"] - 16))
             chunks = make_chunks(lines, models.tokens, cfg["chunk_tokens"])
             passages = ["\n".join(f"{lines[i].speaker}: {lines[i].text}" for i in c) for c in chunks]
@@ -98,7 +104,7 @@ class Index:
         }
         return index
 
-    def rank(self, question, models, cfg):
+    def rank(self, question, models, cfg, query_vector=None):
         start = perf_counter()
         scores = np.zeros(len(self.chunks), dtype=float)
         for word in sorted(set(words(question))):
@@ -110,8 +116,11 @@ class Index:
                 scores[idx] += (
                     idf * freq * 2.2 / (freq + 1.2 * (0.25 + 0.75 * self.lengths[idx] / self.avg))
                 )
-        q = models.dense.run(["Represent this sentence for searching relevant passages: " + question])[0]
-        dense = self.vectors @ q
+        if query_vector is None:
+            query_vector = models.dense.run(
+                ["Represent this sentence for searching relevant passages: " + question]
+            )[0]
+        dense = self.vectors @ query_vector
         pool = cfg["pool"]
         fused = np.zeros(len(scores))
         for values, sparse in ((scores, True), (dense, False)):

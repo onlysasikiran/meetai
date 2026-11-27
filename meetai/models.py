@@ -1,4 +1,6 @@
+import json
 import re
+from functools import cached_property
 from pathlib import Path
 
 import numpy as np
@@ -18,11 +20,12 @@ class Encoder:
         self.model = ort.InferenceSession(
             str(root / "model.onnx"), options, providers=["CPUExecutionProvider"]
         )
+        self.input_names = {value.name for value in self.model.get_inputs()}
         self.tok = Tokenizer.from_file(str(root / "tokenizer.json"))
         self.tok.enable_truncation(max_length=512)
         self.tok.enable_padding(pad_id=0, pad_token="[PAD]")
 
-    def run(self, inputs, pair=False):
+    def run(self, inputs, pair=False, all_labels=False):
         outputs = []
         for start in range(0, len(inputs), 8):
             enc = self.tok.encode_batch(inputs[start : start + 8])
@@ -33,9 +36,17 @@ class Encoder:
                     ("attention_mask", "attention_mask"),
                     ("token_type_ids", "type_ids"),
                 )
+                if name in self.input_names
             }
             y = self.model.run(None, feed)[0]
-            outputs.append(y[:, 0] if pair else y[:, 0, :])
+            if all_labels:
+                # A clipped premise is incomplete evidence. The caller treats this as unknown.
+                for i, encoded in enumerate(enc):
+                    if encoded.overflowing:
+                        y[i] = 0
+                outputs.append(y)
+            else:
+                outputs.append(y[:, 0] if pair else y[:, 0, :])
         y = np.concatenate(outputs)
         if not pair:
             y /= np.maximum(np.linalg.norm(y, axis=1, keepdims=True), 1e-12)
@@ -70,6 +81,7 @@ def validate(raw, allowed):
 class Models:
     def __init__(self, root, threads, ctx=4096, vocab_only=False):
         root = Path(root)
+        self.root, self.threads = root, threads
         self.llm = Llama(
             model_path=str(root / "qwen.gguf"),
             n_ctx=ctx,
@@ -86,13 +98,28 @@ class Models:
         self.cross = Encoder(root / "rerank", threads)
         self.context_size = ctx
 
+    @cached_property
+    def nli(self):
+        root = self.root / "nli"
+        labels = json.loads((root / "config.json").read_text())["label2id"]
+        return Encoder(root, self.threads), {name.casefold(): pos for name, pos in labels.items()}
+
+    def support_scores(self, pairs):
+        encoder, labels = self.nli
+        logits = encoder.run(pairs, pair=True, all_labels=True)
+        probs = np.exp(logits - logits.max(axis=1, keepdims=True))
+        probs /= probs.sum(axis=1, keepdims=True)
+        return [
+            (float(row[labels["entailment"]]), float(row[labels["contradiction"]])) for row in probs
+        ]
+
     def tokens(self, text):
         return self.llm.tokenize(text.encode(), add_bos=False, special=False)
 
-    def generate(self, question, context, max_output):
+    def generate(self, question, context, max_output, *, system=SYSTEM, grammar=None):
         prompt = (
             "<|im_start|>system\n"
-            + SYSTEM
+            + system
             + "<|im_end|>\n<|im_start|>user\n"
             + "Meeting evidence:\n"
             + context
@@ -111,5 +138,6 @@ class Models:
             seed=42,
             stop=["<|im_end|>", "<|im_start|>"],
             echo=False,
+            grammar=grammar,
         )
         return out["choices"][0]["text"], out["usage"]

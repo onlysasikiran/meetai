@@ -18,16 +18,29 @@ def answer(index, question, models, cfg, cache=None, use_answer_cache=True):
             result["timings"] = {"total_s": perf_counter() - started}
             result["llm_calls"] = 0
             return result
-    ranks, timings = index.rank(question, models, cfg)
-    at = perf_counter()
-    context, ids = index.pack(ranks, cfg, models)
+    linked = cfg.get("system") == "meetai"
+    trace = None
+    if linked:
+        from .linked_retrieval import retrieve
+
+        context, ids, timings, trace = retrieve(index, question, models, cfg)
+    else:
+        ranks, timings = index.rank(question, models, cfg)
+        at = perf_counter()
+        context, ids = index.pack(ranks, cfg, models)
+        timings["assembly_s"] = perf_counter() - at
     budget_used = len(models.tokens(context))
-    timings["assembly_s"] = perf_counter() - at
     at = perf_counter()
     raw, usage = models.generate(question, context, cfg["max_output"])
     timings["generation_s"] = perf_counter() - at
     at = perf_counter()
-    result = validate(raw, set(ids))
+    if linked:
+        from .grounding import validated_answer
+
+        result = validated_answer(raw, ids, index, models, cfg, question, trace)
+        result["trace"] = trace
+    else:
+        result = validate(raw, set(ids))
     result.update(
         {
             "ids": ids,
@@ -49,6 +62,10 @@ def answer(index, question, models, cfg, cache=None, use_answer_cache=True):
 
 def summarize(index, models, cfg):
     """Conventional contiguous map/reduce; every retained citation survives each reduction."""
+    if cfg.get("system") == "meetai":
+        from .minutes import whole_meeting
+
+        return whole_meeting(index, models, cfg)
     prompt = "Summarize the key decisions, actions and outstanding issues across this meeting."
     budget = cfg["budget"]
     calls = 0
