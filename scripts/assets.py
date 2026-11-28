@@ -21,7 +21,7 @@ def main():
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     assets = {}
-    for manifest in ("assets.json", "meetai-assets.json"):
+    for manifest in ("assets.json", "meetai-assets.json", "phase3-assets.json"):
         assets.update(json.loads((root / "configs" / manifest).read_text()))
     for name, info in assets.items():
         if args.group != "all" and not name.startswith(args.group + "/"):
