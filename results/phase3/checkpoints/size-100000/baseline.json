@@ -1,0 +1,166 @@
+[
+  {
+    "target": 100000,
+    "format": ".txt",
+    "ingestion": {
+      "tokens": 100012,
+      "seconds": 7.611352076000003,
+      "cache_hit": false,
+      "turns": 4089,
+      "chunks": 815
+    },
+    "source_sha256": "8021ce3c0e8993275655ad6bebdf85e6d754f1e8c394ec33641503185c9d7fe8",
+    "qa": [
+      {
+        "id": "s81037-final",
+        "gold": [
+          "Omar",
+          "June 18"
+        ],
+        "gold_evidence": [
+          [
+            [
+              2944
+            ]
+          ],
+          [
+            [
+              3721
+            ]
+          ]
+        ],
+        "recall": 1.0,
+        "claims": [
+          {
+            "text": "Current delivery owner: Omar . Deadline: June 18",
+            "cites": [
+              "2944",
+              "3721"
+            ]
+          }
+        ],
+        "seconds": 34.26180922399999,
+        "stage_s": {
+          "retrieval_s": 0.007582303999924989,
+          "rerank_s": 0.05729826700007834,
+          "assembly_s": 0.008178044000032969,
+          "generation_s": 34.066723035999985,
+          "validation_s": 0.00041964399997596047,
+          "total_s": 34.26179491100004
+        },
+        "tokens": 873,
+        "ids": [
+          "157",
+          "158",
+          "159",
+          "160",
+          "161",
+          "162",
+          "163",
+          "164",
+          "165",
+          "166",
+          "2938",
+          "2939",
+          "2940",
+          "2941",
+          "2942",
+          "2943",
+          "2944",
+          "2945",
+          "2946",
+          "2947",
+          "3718",
+          "3719",
+          "3720",
+          "3721",
+          "3722",
+          "3723",
+          "3724",
+          "3725",
+          "3726",
+          "3727"
+        ],
+        "abstained": false,
+        "answer_digest": "dd8061a6ffa4429d67496bc0a2b6cd1da6a57b1f7ab5288015d1c991200494b9"
+      },
+      {
+        "id": "s81037-release",
+        "gold": [
+          "Maple"
+        ],
+        "gold_evidence": [
+          [
+            [
+              654
+            ]
+          ],
+          [
+            [
+              2208
+            ]
+          ]
+        ],
+        "recall": 1.0,
+        "claims": [
+          {
+            "text": "Dispatch requires the Maple clearance for Quartz before release.  Clerk: Item 2209: the procurement desk filed the paperwork for the assembly bay before closing the log.  Analyst: Item 2210: the training desk collected signatures for the north depot before closing the log.  Secretary: Item 2211: the training desk filed the paperwork for the overflow store before closing the log.  Clerk: Item 2",
+            "cites": [
+              "2208",
+              "2209",
+              "2210",
+              "2211",
+              "2212"
+            ]
+          }
+        ],
+        "seconds": 41.96578915400005,
+        "stage_s": {
+          "retrieval_s": 0.006216861999973844,
+          "rerank_s": 0.05115107699998589,
+          "assembly_s": 0.008026576000020214,
+          "generation_s": 41.89772852100009,
+          "validation_s": 0.00020554000002448447,
+          "total_s": 41.96576048999998
+        },
+        "tokens": 868,
+        "ids": [
+          "647",
+          "648",
+          "649",
+          "650",
+          "651",
+          "652",
+          "653",
+          "654",
+          "655",
+          "656",
+          "657",
+          "1058",
+          "1059",
+          "1060",
+          "1061",
+          "1062",
+          "1063",
+          "1064",
+          "1065",
+          "1066",
+          "1067",
+          "2208",
+          "2209",
+          "2210",
+          "2211",
+          "2212",
+          "2213",
+          "2214",
+          "2215",
+          "2216",
+          "2217"
+        ],
+        "abstained": false,
+        "answer_digest": "e23eeb21ffd5efe6da274f8cacd302a591f9714b40dd3b002fe25206dec5a4a9"
+      }
+    ],
+    "process_high_water_mib": 5070.390625
+  }
+]
