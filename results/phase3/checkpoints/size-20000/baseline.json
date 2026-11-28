@@ -1,0 +1,470 @@
+[
+  {
+    "target": 20000,
+    "format": ".txt",
+    "ingestion": {
+      "tokens": 20019,
+      "seconds": 1.9915581850000024,
+      "cache_hit": false,
+      "turns": 852,
+      "chunks": 167
+    },
+    "source_sha256": "e21ff7dd2ee47c834e7615df0663b5590bc86197df81e0063fdb79f0c6d68e8f",
+    "qa": [
+      {
+        "id": "s81037-final",
+        "gold": [
+          "Omar",
+          "June 18"
+        ],
+        "gold_evidence": [
+          [
+            [
+              613
+            ]
+          ],
+          [
+            [
+              775
+            ]
+          ]
+        ],
+        "recall": 1.0,
+        "claims": [
+          {
+            "text": "Approved handover: Omar now owns delivery of Aster, replacing Isha.  The agreed delivery deadline for Aster has moved from April 6 to June 18",
+            "cites": [
+              "613",
+              "775"
+            ]
+          }
+        ],
+        "seconds": 50.025579311,
+        "stage_s": {
+          "retrieval_s": 0.006162461000002395,
+          "rerank_s": 0.06462782200000561,
+          "assembly_s": 0.011020380000019259,
+          "generation_s": 49.940961327,
+          "validation_s": 0.0003743259999851034,
+          "total_s": 50.02557373800002
+        },
+        "tokens": 859,
+        "ids": [
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "611",
+          "612",
+          "613",
+          "614",
+          "615",
+          "616",
+          "617",
+          "618",
+          "619",
+          "620",
+          "771",
+          "772",
+          "773",
+          "774",
+          "775",
+          "776",
+          "777",
+          "778",
+          "779",
+          "780"
+        ],
+        "abstained": false,
+        "answer_digest": "27fa6cb5a44f7fbbe3ce66009d4afb71c278991ffcfaed1dfae7c6e13877f290"
+      },
+      {
+        "id": "s81037-release",
+        "gold": [
+          "Maple"
+        ],
+        "gold_evidence": [
+          [
+            [
+              136
+            ]
+          ],
+          [
+            [
+              460
+            ]
+          ]
+        ],
+        "recall": 0.5,
+        "claims": [],
+        "seconds": 46.190887594,
+        "stage_s": {
+          "retrieval_s": 0.00626637199999891,
+          "rerank_s": 0.06379618200000436,
+          "assembly_s": 0.010978364000010288,
+          "generation_s": 46.107597758,
+          "validation_s": 0.00011752699998623939,
+          "total_s": 46.19088049200002
+        },
+        "tokens": 866,
+        "ids": [
+          "450",
+          "451",
+          "452",
+          "453",
+          "454",
+          "455",
+          "456",
+          "457",
+          "458",
+          "459",
+          "460",
+          "611",
+          "612",
+          "613",
+          "614",
+          "615",
+          "616",
+          "617",
+          "618",
+          "619",
+          "620",
+          "811",
+          "812",
+          "813",
+          "814",
+          "815",
+          "816",
+          "817",
+          "818",
+          "819",
+          "820",
+          "821"
+        ],
+        "abstained": true,
+        "answer_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    ],
+    "process_high_water_mib": 4942.671875
+  },
+  {
+    "target": 20000,
+    "format": ".md",
+    "ingestion": {
+      "tokens": 20019,
+      "seconds": 1.835483369000002,
+      "cache_hit": false,
+      "turns": 852,
+      "chunks": 167
+    },
+    "source_sha256": "d0901ff048bf1b1e1e925cec553946fae5c91bdd0f69b032bbb709d1d16c1d4c",
+    "qa": [
+      {
+        "id": "s81037-final",
+        "gold": [
+          "Omar",
+          "June 18"
+        ],
+        "gold_evidence": [
+          [
+            [
+              613
+            ]
+          ],
+          [
+            [
+              775
+            ]
+          ]
+        ],
+        "recall": 1.0,
+        "claims": [
+          {
+            "text": "Approved handover: Omar now owns delivery of Aster, replacing Isha.  The agreed delivery deadline for Aster has moved from April 6 to June 18",
+            "cites": [
+              "613",
+              "775"
+            ]
+          }
+        ],
+        "seconds": 49.97323729100003,
+        "stage_s": {
+          "retrieval_s": 0.0051918400000090514,
+          "rerank_s": 0.06542393300000526,
+          "assembly_s": 0.01105734800000846,
+          "generation_s": 49.88915184100003,
+          "validation_s": 0.00012414500002932982,
+          "total_s": 49.97323025299997
+        },
+        "tokens": 859,
+        "ids": [
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "611",
+          "612",
+          "613",
+          "614",
+          "615",
+          "616",
+          "617",
+          "618",
+          "619",
+          "620",
+          "771",
+          "772",
+          "773",
+          "774",
+          "775",
+          "776",
+          "777",
+          "778",
+          "779",
+          "780"
+        ],
+        "abstained": false,
+        "answer_digest": "27fa6cb5a44f7fbbe3ce66009d4afb71c278991ffcfaed1dfae7c6e13877f290"
+      },
+      {
+        "id": "s81037-release",
+        "gold": [
+          "Maple"
+        ],
+        "gold_evidence": [
+          [
+            [
+              136
+            ]
+          ],
+          [
+            [
+              460
+            ]
+          ]
+        ],
+        "recall": 0.5,
+        "claims": [],
+        "seconds": 46.29701500599998,
+        "stage_s": {
+          "retrieval_s": 0.006451948999995238,
+          "rerank_s": 0.06498084899999412,
+          "assembly_s": 0.01110820399998147,
+          "generation_s": 46.21208784100003,
+          "validation_s": 0.00012061199998925076,
+          "total_s": 46.29700599700004
+        },
+        "tokens": 866,
+        "ids": [
+          "450",
+          "451",
+          "452",
+          "453",
+          "454",
+          "455",
+          "456",
+          "457",
+          "458",
+          "459",
+          "460",
+          "611",
+          "612",
+          "613",
+          "614",
+          "615",
+          "616",
+          "617",
+          "618",
+          "619",
+          "620",
+          "811",
+          "812",
+          "813",
+          "814",
+          "815",
+          "816",
+          "817",
+          "818",
+          "819",
+          "820",
+          "821"
+        ],
+        "abstained": true,
+        "answer_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    ],
+    "process_high_water_mib": 4975.921875
+  },
+  {
+    "target": 20000,
+    "format": ".pdf",
+    "ingestion": {
+      "tokens": 20019,
+      "seconds": 1.9177010349999932,
+      "cache_hit": false,
+      "turns": 852,
+      "chunks": 167
+    },
+    "source_sha256": "cd623a143419141d1522761838fad4bb9a7acf33574a73dbc3b967dc6f367f79",
+    "qa": [
+      {
+        "id": "s81037-final",
+        "gold": [
+          "Omar",
+          "June 18"
+        ],
+        "gold_evidence": [
+          [
+            [
+              613
+            ]
+          ],
+          [
+            [
+              775
+            ]
+          ]
+        ],
+        "recall": 1.0,
+        "claims": [
+          {
+            "text": "Approved handover: Omar now owns delivery of Aster, replacing Isha.  The agreed delivery deadline for Aster has moved from April 6 to June 18",
+            "cites": [
+              "613",
+              "775"
+            ]
+          }
+        ],
+        "seconds": 50.03016452200001,
+        "stage_s": {
+          "retrieval_s": 0.005466942999987623,
+          "rerank_s": 0.0650860890000331,
+          "assembly_s": 0.011064228999998704,
+          "generation_s": 49.94631260700004,
+          "validation_s": 0.00011369099996727527,
+          "total_s": 50.030157334999956
+        },
+        "tokens": 859,
+        "ids": [
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "611",
+          "612",
+          "613",
+          "614",
+          "615",
+          "616",
+          "617",
+          "618",
+          "619",
+          "620",
+          "771",
+          "772",
+          "773",
+          "774",
+          "775",
+          "776",
+          "777",
+          "778",
+          "779",
+          "780"
+        ],
+        "abstained": false,
+        "answer_digest": "27fa6cb5a44f7fbbe3ce66009d4afb71c278991ffcfaed1dfae7c6e13877f290"
+      },
+      {
+        "id": "s81037-release",
+        "gold": [
+          "Maple"
+        ],
+        "gold_evidence": [
+          [
+            [
+              136
+            ]
+          ],
+          [
+            [
+              460
+            ]
+          ]
+        ],
+        "recall": 0.5,
+        "claims": [],
+        "seconds": 46.09275738300005,
+        "stage_s": {
+          "retrieval_s": 0.005850371000008181,
+          "rerank_s": 0.06345049800000879,
+          "assembly_s": 0.011025832000029823,
+          "generation_s": 46.01020557100003,
+          "validation_s": 0.00011150099999213126,
+          "total_s": 46.092750204000026
+        },
+        "tokens": 866,
+        "ids": [
+          "450",
+          "451",
+          "452",
+          "453",
+          "454",
+          "455",
+          "456",
+          "457",
+          "458",
+          "459",
+          "460",
+          "611",
+          "612",
+          "613",
+          "614",
+          "615",
+          "616",
+          "617",
+          "618",
+          "619",
+          "620",
+          "811",
+          "812",
+          "813",
+          "814",
+          "815",
+          "816",
+          "817",
+          "818",
+          "819",
+          "820",
+          "821"
+        ],
+        "abstained": true,
+        "answer_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    ],
+    "process_high_water_mib": 4982.6875
+  }
+]
