@@ -1,0 +1,118 @@
+[
+  {
+    "target": "turns",
+    "format": ".txt",
+    "ingestion": {
+      "tokens": 503752,
+      "seconds": 61.32668796600001,
+      "cache_hit": false,
+      "turns": 20000,
+      "chunks": 4166,
+      "graph_cache_hit": false,
+      "blocks": 695,
+      "links": 20830
+    },
+    "source_sha256": "9f021d3eeed1168850f63bfa5e3f7ebaed4d694af41c1387a8969cb0441ee430",
+    "qa": [
+      {
+        "id": "s81037-final",
+        "gold": [
+          "Omar",
+          "June 18"
+        ],
+        "gold_evidence": [
+          [
+            [
+              14400
+            ]
+          ],
+          [
+            [
+              18200
+            ]
+          ]
+        ],
+        "recall": 1.0,
+        "claims": [
+          {
+            "text": "Current delivery owner: Omar",
+            "cites": [
+              "14400"
+            ]
+          },
+          {
+            "text": "Current deadline: June 18",
+            "cites": [
+              "18200"
+            ]
+          }
+        ],
+        "seconds": 10.204947439000023,
+        "stage_s": {
+          "retrieval_s": 0.02158478900003047,
+          "rerank_s": 0.07941250900000796,
+          "expansion_s": 0.002110170999969796,
+          "turn_rerank_s": 0.04972749400002385,
+          "assembly_s": 0.001424434000000474,
+          "generation_s": 10.023806968999963,
+          "validation_s": 0.024835576999976183,
+          "total_s": 10.204942813000002
+        },
+        "tokens": 70,
+        "ids": [
+          "3200",
+          "14400",
+          "18200"
+        ],
+        "abstained": false,
+        "answer_digest": "21e0830f5ca94f72af7433d1dda3d006b05d10b225d42e27927d0d5764c240b7"
+      },
+      {
+        "id": "s81037-release",
+        "gold": [
+          "Maple"
+        ],
+        "gold_evidence": [
+          [
+            [
+              3200
+            ]
+          ],
+          [
+            [
+              10800
+            ]
+          ]
+        ],
+        "recall": 1.0,
+        "claims": [
+          {
+            "text": "Maple clearance",
+            "cites": [
+              "10800"
+            ]
+          }
+        ],
+        "seconds": 7.23091462299999,
+        "stage_s": {
+          "retrieval_s": 0.017239431000007244,
+          "rerank_s": 0.07595153500000151,
+          "expansion_s": 0.0013380460000007588,
+          "turn_rerank_s": 0.04975758199998381,
+          "assembly_s": 0.0008783560000438229,
+          "generation_s": 7.071271528000011,
+          "validation_s": 0.012740389999976287,
+          "total_s": 7.230905509000024
+        },
+        "tokens": 38,
+        "ids": [
+          "3200",
+          "10800"
+        ],
+        "abstained": false,
+        "answer_digest": "660f228df347f8e4349054acd99f0f1430aed07d1a7f3f3e751b28db54f1c4cf"
+      }
+    ],
+    "process_high_water_mib": 5881.91015625
+  }
+]

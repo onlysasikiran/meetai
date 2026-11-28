@@ -1,0 +1,14 @@
+{
+  "batch": "size-turns",
+  "protocol": "94ec6f5f8a4eb56056f6a2d8b992a79f38da944392246b8bb994fc2d108eccac",
+  "runner": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.39",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "logical_cpus": 4,
+  "ram": "MemTotal:       16367500 kB",
+  "workflow_run": "46132175836",
+  "source_commit": "9f26586629f91a40ab2cb38bc830b335d406ab28",
+  "files": {
+    "baseline.json": "687f13d5a8c9527cc7a3b35e0a17d84bef245e1f25f4aa1f32becb585932a46a",
+    "meetai.json": "7d8c3a9770fe7f4be36bbefdee810749a34b99cf155834b860c0faf01912b84f"
+  }
+}
