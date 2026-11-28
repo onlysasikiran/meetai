@@ -1,0 +1,169 @@
+{
+  "system": "baseline",
+  "config_sha256": "adc8e71b37a557fe41d4412c969860fd0d260f0eda95256e67f13a066d482aa5",
+  "runtime": {
+    "cpu": "Intel(R) Xeon(R) 6975P-C",
+    "cpus": 4,
+    "python": "3.12.16",
+    "packages": {
+      "llama-cpp-python": "0.3.19",
+      "onnxruntime": "1.23.2",
+      "numpy": "2.3.5",
+      "pypdf": "6.21.4",
+      "tokenizers": "0.22.1"
+    },
+    "omp": "6",
+    "blas": "1",
+    "hash_seed": "0",
+    "system": "Linux-7.0.0-1018-aws-x86_64-with-glibc2.39"
+  },
+  "cold_passes": 2,
+  "warm_passes": 5,
+  "ingestion": {
+    "ES2004a": {
+      "tokens": 4994,
+      "seconds": 0.6891540110000278,
+      "cache_hit": false,
+      "turns": 320,
+      "chunks": 45,
+      "dataset": "QMSum",
+      "source_sha256": "52f7b39b7540b6f8576955170f4fe20b939cf55317f871349d293f16bef3c926"
+    }
+  },
+  "queries": [
+    {
+      "id": "qt-ES2004a-1",
+      "dataset": "QMSum",
+      "meeting": "ES2004a",
+      "category": "topic-summary",
+      "gold_units": 6,
+      "answer_digest": "a988709f1ff328a78aba0d7d578efce4d806de49e046f50b961e185049b7bb9a",
+      "claim_lines": 1,
+      "abstained": false,
+      "rejected_lines": 0,
+      "context_tokens": 906,
+      "complete_turns": [
+        15,
+        16,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317
+      ],
+      "delivered_ids": [
+        "15.1",
+        "15.2",
+        "16",
+        "223",
+        "224",
+        "225",
+        "226",
+        "227",
+        "228",
+        "229",
+        "230",
+        "231",
+        "232",
+        "233",
+        "234",
+        "235",
+        "301",
+        "302",
+        "303",
+        "304",
+        "305",
+        "306",
+        "307",
+        "308",
+        "309",
+        "310",
+        "311",
+        "312",
+        "313",
+        "314",
+        "315",
+        "316",
+        "317"
+      ],
+      "usage": {
+        "prompt_tokens": 1019,
+        "completion_tokens": 120,
+        "total_tokens": 1139
+      },
+      "evidence_recall": 0.3333333333333333,
+      "cold_s": 64.883994314,
+      "stage_s": {
+        "retrieval_s": 0.0058949599999778,
+        "rerank_s": 0.08955865400002949,
+        "assembly_s": 0.01226984100003392,
+        "generation_s": 64.773138367,
+        "validation_s": 0.0003168499999901542,
+        "total_s": 64.88398575499997
+      },
+      "llm_calls": 1,
+      "official_turn_recall": 0.17985611510791366,
+      "cold_repeats_s": [
+        64.883994314,
+        65.11245375200002
+      ],
+      "warm_s": [
+        7.563899998785928e-05,
+        3.95319999597632e-05,
+        2.8455000006033515e-05,
+        2.553099994884178e-05,
+        4.926200000454628e-05
+      ]
+    }
+  ],
+  "budget_sweep": [
+    {
+      "id": "qt-ES2004a-1",
+      "dataset": "QMSum",
+      "budget": 2048,
+      "tokens": 906,
+      "recall": 0.3333333333333333
+    },
+    {
+      "id": "qt-ES2004a-1",
+      "dataset": "QMSum",
+      "budget": 4096,
+      "tokens": 906,
+      "recall": 0.3333333333333333
+    },
+    {
+      "id": "qt-ES2004a-1",
+      "dataset": "QMSum",
+      "budget": 8192,
+      "tokens": 906,
+      "recall": 0.3333333333333333
+    }
+  ],
+  "startup_s": 1.9442240780000475,
+  "peak_rss_mib": 4977.015625
+}

@@ -1,0 +1,15 @@
+{
+  "batch": "ES2004a",
+  "protocol": "94ec6f5f8a4eb56056f6a2d8b992a79f38da944392246b8bb994fc2d108eccac",
+  "runner": "Linux-7.0.0-1018-aws-x86_64-with-glibc2.39",
+  "cpu": "Intel(R) Xeon(R) 6975P-C",
+  "logical_cpus": 4,
+  "ram": "MemTotal:       16078396 kB",
+  "workflow_run": "46132175836",
+  "source_commit": "9f26586629f91a40ab2cb38bc830b335d406ab28",
+  "files": {
+    "baseline.json": "55e1e3484c66939c00b26a0b6963296b104165c5d4580d66b6fd31c5dae61843",
+    "meetai.json": "d57a2f2dc54a2d3c6d8b1d0360326862da4c3e078556620855b2aecc4fc584ba",
+    "review.cms": "197db820ab9ad3041ac56577a9ae11666ca1f7e7927b56a53839b64a36915ee1"
+  }
+}

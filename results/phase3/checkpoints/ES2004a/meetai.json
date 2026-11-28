@@ -1,0 +1,176 @@
+{
+  "system": "meetai",
+  "config_sha256": "857171c9d61178f8d3cb094d3103f341602baa9427bf5caeff4c7a39d8fb8d44",
+  "runtime": {
+    "cpu": "Intel(R) Xeon(R) 6975P-C",
+    "cpus": 4,
+    "python": "3.12.16",
+    "packages": {
+      "llama-cpp-python": "0.3.19",
+      "onnxruntime": "1.23.2",
+      "numpy": "2.3.5",
+      "pypdf": "6.21.4",
+      "tokenizers": "0.22.1"
+    },
+    "omp": "6",
+    "blas": "1",
+    "hash_seed": "0",
+    "system": "Linux-7.0.0-1018-aws-x86_64-with-glibc2.39"
+  },
+  "cold_passes": 2,
+  "warm_passes": 5,
+  "ingestion": {
+    "ES2004a": {
+      "tokens": 4994,
+      "seconds": 0.7151558349999618,
+      "cache_hit": false,
+      "turns": 320,
+      "chunks": 45,
+      "graph_cache_hit": false,
+      "blocks": 8,
+      "links": 225,
+      "dataset": "QMSum",
+      "source_sha256": "52f7b39b7540b6f8576955170f4fe20b939cf55317f871349d293f16bef3c926"
+    }
+  },
+  "queries": [
+    {
+      "id": "qt-ES2004a-1",
+      "dataset": "QMSum",
+      "meeting": "ES2004a",
+      "category": "topic-summary",
+      "gold_units": 6,
+      "answer_digest": "5d37a44831d72bdb5a90df4992e610146a2cfc0bc3610d850d6fe0e0e54293bb",
+      "claim_lines": 1,
+      "abstained": false,
+      "rejected_lines": 0,
+      "context_tokens": 963,
+      "complete_turns": [
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        184,
+        185,
+        186,
+        223,
+        224,
+        225,
+        226,
+        227,
+        238,
+        239,
+        267,
+        268,
+        269,
+        270,
+        309,
+        310,
+        311
+      ],
+      "delivered_ids": [
+        "9",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15.1",
+        "15.2",
+        "47",
+        "48",
+        "49",
+        "50",
+        "51",
+        "52",
+        "53",
+        "54",
+        "55",
+        "184",
+        "185",
+        "186",
+        "223",
+        "224",
+        "225",
+        "226",
+        "227",
+        "238",
+        "239",
+        "267",
+        "268",
+        "269",
+        "270",
+        "309",
+        "310",
+        "311"
+      ],
+      "usage": {
+        "prompt_tokens": 1076,
+        "completion_tokens": 120,
+        "total_tokens": 1196
+      },
+      "evidence_recall": 0.16666666666666666,
+      "cold_s": 68.78183754100002,
+      "stage_s": {
+        "retrieval_s": 0.00638770000000477,
+        "rerank_s": 0.09087641200000007,
+        "expansion_s": 0.0009791279999831204,
+        "turn_rerank_s": 0.09376215099996443,
+        "assembly_s": 0.03881525500003136,
+        "generation_s": 68.2975525,
+        "validation_s": 0.25077273600004446,
+        "total_s": 68.78183247199996
+      },
+      "llm_calls": 1,
+      "official_turn_recall": 0.1223021582733813,
+      "cold_repeats_s": [
+        68.78183754100002,
+        68.78720285400004
+      ],
+      "without_validation_digest": "5d37a44831d72bdb5a90df4992e610146a2cfc0bc3610d850d6fe0e0e54293bb",
+      "without_validation_lines": 1,
+      "warm_s": [
+        0.00013432200000806915,
+        5.670899997767265e-05,
+        4.2451000012988516e-05,
+        3.897800002050644e-05,
+        3.055899992432387e-05
+      ]
+    }
+  ],
+  "budget_sweep": [
+    {
+      "id": "qt-ES2004a-1",
+      "dataset": "QMSum",
+      "budget": 2048,
+      "tokens": 963,
+      "recall": 0.16666666666666666
+    },
+    {
+      "id": "qt-ES2004a-1",
+      "dataset": "QMSum",
+      "budget": 4096,
+      "tokens": 963,
+      "recall": 0.16666666666666666
+    },
+    {
+      "id": "qt-ES2004a-1",
+      "dataset": "QMSum",
+      "budget": 8192,
+      "tokens": 963,
+      "recall": 0.16666666666666666
+    }
+  ],
+  "startup_s": 2.4171058860000016,
+  "peak_rss_mib": 5333.23046875
+}
