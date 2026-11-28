@@ -1,0 +1,387 @@
+{
+  "system": "meetai",
+  "config_sha256": "857171c9d61178f8d3cb094d3103f341602baa9427bf5caeff4c7a39d8fb8d44",
+  "runtime": {
+    "cpu": "AMD EPYC 7763 64-Core Processor",
+    "cpus": 4,
+    "python": "3.12.16",
+    "packages": {
+      "llama-cpp-python": "0.3.19",
+      "onnxruntime": "1.23.2",
+      "numpy": "2.3.5",
+      "pypdf": "6.21.4",
+      "tokenizers": "0.22.1"
+    },
+    "omp": "6",
+    "blas": "1",
+    "hash_seed": "0",
+    "system": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.39"
+  },
+  "cold_passes": 2,
+  "warm_passes": 5,
+  "ingestion": {
+    "test-s24911": {
+      "tokens": 21627,
+      "seconds": 4.905117097000016,
+      "cache_hit": false,
+      "turns": 917,
+      "chunks": 180,
+      "graph_cache_hit": false,
+      "blocks": 30,
+      "links": 900,
+      "dataset": "MeetAI-Stress",
+      "source_sha256": "6ee6ff3b8ad0e596e38fb1404b7cc4a694bbbe4476cb2dac8aca0018781bf387"
+    }
+  },
+  "queries": [
+    {
+      "id": "s24911-initial",
+      "dataset": "MeetAI-Stress",
+      "meeting": "test-s24911",
+      "category": "simple",
+      "gold_units": 1,
+      "answer_digest": "74cc702bc35230ca8af423bc7387dbdb3c195f15561889b72b21133afde4785b",
+      "claim_lines": 1,
+      "abstained": false,
+      "rejected_lines": 0,
+      "context_tokens": 90,
+      "complete_turns": [
+        37,
+        38,
+        147,
+        660
+      ],
+      "delivered_ids": [
+        "37",
+        "38",
+        "147",
+        "660"
+      ],
+      "usage": {
+        "prompt_tokens": 201,
+        "completion_tokens": 7,
+        "total_tokens": 208
+      },
+      "evidence_recall": 1.0,
+      "cold_s": 10.958743091999963,
+      "stage_s": {
+        "retrieval_s": 0.01135677599995688,
+        "rerank_s": 0.21536954900000183,
+        "expansion_s": 0.0017231509999646732,
+        "turn_rerank_s": 0.09527616200000466,
+        "assembly_s": 0.0026857880000079604,
+        "generation_s": 10.609270799,
+        "validation_s": 0.020824263000008614,
+        "total_s": 10.958737530999997
+      },
+      "llm_calls": 1,
+      "cold_repeats_s": [
+        10.958743091999963,
+        10.85329199399996
+      ],
+      "without_validation_digest": "74cc702bc35230ca8af423bc7387dbdb3c195f15561889b72b21133afde4785b",
+      "without_validation_lines": 1,
+      "warm_s": [
+        0.00014243500004340603,
+        8.14119999859031e-05,
+        5.836799994085595e-05,
+        5.097500002193556e-05,
+        4.940099995565106e-05
+      ]
+    },
+    {
+      "id": "s24911-transfer",
+      "dataset": "MeetAI-Stress",
+      "meeting": "test-s24911",
+      "category": "temporal",
+      "gold_units": 1,
+      "answer_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "claim_lines": 0,
+      "abstained": true,
+      "rejected_lines": 0,
+      "context_tokens": 19,
+      "complete_turns": [
+        147
+      ],
+      "delivered_ids": [
+        "147"
+      ],
+      "usage": {
+        "prompt_tokens": 128,
+        "completion_tokens": 1,
+        "total_tokens": 129
+      },
+      "evidence_recall": 0.0,
+      "cold_s": 6.4666775539999435,
+      "stage_s": {
+        "retrieval_s": 0.009382317000017792,
+        "rerank_s": 0.17056998399993972,
+        "expansion_s": 0.001306787000089571,
+        "turn_rerank_s": 0.09004184800005532,
+        "assembly_s": 0.0007143269999687618,
+        "generation_s": 6.192764385000032,
+        "validation_s": 0.0001307229999838455,
+        "total_s": 6.466673086000014
+      },
+      "llm_calls": 1,
+      "cold_repeats_s": [
+        6.4666775539999435,
+        6.456804746000103
+      ],
+      "without_validation_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "without_validation_lines": 0,
+      "warm_s": [
+        0.00017311199997038784,
+        5.944099996213481e-05,
+        5.241799999566865e-05,
+        4.8559999981989677e-05,
+        4.611600002135674e-05
+      ]
+    },
+    {
+      "id": "s24911-final",
+      "dataset": "MeetAI-Stress",
+      "meeting": "test-s24911",
+      "category": "temporal",
+      "gold_units": 2,
+      "answer_digest": "7c915825c13d21afd91e5c6ebb8337e6996650f0d202e76b8e1d45b32abe12d9",
+      "claim_lines": 1,
+      "abstained": false,
+      "rejected_lines": 1,
+      "context_tokens": 86,
+      "complete_turns": [
+        37,
+        147,
+        660,
+        834
+      ],
+      "delivered_ids": [
+        "37",
+        "147",
+        "660",
+        "834"
+      ],
+      "usage": {
+        "prompt_tokens": 199,
+        "completion_tokens": 24,
+        "total_tokens": 223
+      },
+      "evidence_recall": 1.0,
+      "cold_s": 12.888413044000004,
+      "stage_s": {
+        "retrieval_s": 0.010816200000022036,
+        "rerank_s": 0.18561296099994706,
+        "expansion_s": 0.0028404060000184472,
+        "turn_rerank_s": 0.09848209599999791,
+        "assembly_s": 0.002643471000055797,
+        "generation_s": 12.55766441000003,
+        "validation_s": 0.02781129000004512,
+        "total_s": 12.888408185000003
+      },
+      "llm_calls": 1,
+      "cold_repeats_s": [
+        12.888413044000004,
+        12.760884271000009
+      ],
+      "without_validation_digest": "cb0f3b4e1a1b313c635cdb035d893febec4a0e61bdbb8ca7e1419b4d0974aabe",
+      "without_validation_lines": 2,
+      "warm_s": [
+        0.00019031399995128595,
+        6.40089999706106e-05,
+        5.500300005678582e-05,
+        5.240699999831122e-05,
+        5.157500004315807e-05
+      ]
+    },
+    {
+      "id": "s24911-release",
+      "dataset": "MeetAI-Stress",
+      "meeting": "test-s24911",
+      "category": "multi-hop",
+      "gold_units": 1,
+      "answer_digest": "498c16f341370d7630ba5a2f2407c3fceeb11fc5643df7fdd4435d030a007871",
+      "claim_lines": 2,
+      "abstained": false,
+      "rejected_lines": 0,
+      "context_tokens": 65,
+      "complete_turns": [
+        146,
+        147,
+        495
+      ],
+      "delivered_ids": [
+        "146",
+        "147",
+        "495"
+      ],
+      "usage": {
+        "prompt_tokens": 173,
+        "completion_tokens": 38,
+        "total_tokens": 211
+      },
+      "evidence_recall": 1.0,
+      "cold_s": 13.349617789000035,
+      "stage_s": {
+        "retrieval_s": 0.008875737000039408,
+        "rerank_s": 0.1653858559999435,
+        "expansion_s": 0.001608597999961603,
+        "turn_rerank_s": 0.08261278099996616,
+        "assembly_s": 0.0017525450000448473,
+        "generation_s": 13.034772136000015,
+        "validation_s": 0.05233174500006044,
+        "total_s": 13.349613610999995
+      },
+      "llm_calls": 1,
+      "cold_repeats_s": [
+        13.349617789000035,
+        13.376217057000076
+      ],
+      "without_validation_digest": "995b43421f634fd89066f4db50566f2aac2b8d1213630abbf370fc4c37a8e4c3",
+      "without_validation_lines": 2,
+      "warm_s": [
+        0.00016727000001992565,
+        6.225599997833342e-05,
+        5.5001999953674385e-05,
+        8.703099990725605e-05,
+        5.428099996152014e-05
+      ]
+    },
+    {
+      "id": "s24911-absent",
+      "dataset": "MeetAI-Stress",
+      "meeting": "test-s24911",
+      "category": "unanswerable",
+      "gold_units": 0,
+      "answer_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "claim_lines": 0,
+      "abstained": true,
+      "rejected_lines": 0,
+      "context_tokens": 19,
+      "complete_turns": [
+        147
+      ],
+      "delivered_ids": [
+        "147"
+      ],
+      "usage": {
+        "prompt_tokens": 129,
+        "completion_tokens": 1,
+        "total_tokens": 130
+      },
+      "evidence_recall": null,
+      "cold_s": 6.574708350000037,
+      "stage_s": {
+        "retrieval_s": 0.009589942000047813,
+        "rerank_s": 0.16070884199996271,
+        "expansion_s": 0.0012957160000723889,
+        "turn_rerank_s": 0.0818748899999946,
+        "assembly_s": 0.0006821769999305616,
+        "generation_s": 6.31867656899999,
+        "validation_s": 0.0001261849999991682,
+        "total_s": 6.574704530999952
+      },
+      "llm_calls": 1,
+      "cold_repeats_s": [
+        6.574708350000037,
+        6.561027587000012
+      ],
+      "without_validation_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "without_validation_lines": 0,
+      "warm_s": [
+        0.00017757899991011072,
+        8.093099995676312e-05,
+        6.429999996271363e-05,
+        7.780400005685806e-05,
+        5.035399999542278e-05
+      ]
+    }
+  ],
+  "budget_sweep": [
+    {
+      "id": "s24911-initial",
+      "dataset": "MeetAI-Stress",
+      "budget": 2048,
+      "tokens": 90,
+      "recall": 1.0
+    },
+    {
+      "id": "s24911-initial",
+      "dataset": "MeetAI-Stress",
+      "budget": 4096,
+      "tokens": 90,
+      "recall": 1.0
+    },
+    {
+      "id": "s24911-initial",
+      "dataset": "MeetAI-Stress",
+      "budget": 8192,
+      "tokens": 90,
+      "recall": 1.0
+    },
+    {
+      "id": "s24911-transfer",
+      "dataset": "MeetAI-Stress",
+      "budget": 2048,
+      "tokens": 19,
+      "recall": 0.0
+    },
+    {
+      "id": "s24911-transfer",
+      "dataset": "MeetAI-Stress",
+      "budget": 4096,
+      "tokens": 19,
+      "recall": 0.0
+    },
+    {
+      "id": "s24911-transfer",
+      "dataset": "MeetAI-Stress",
+      "budget": 8192,
+      "tokens": 19,
+      "recall": 0.0
+    },
+    {
+      "id": "s24911-final",
+      "dataset": "MeetAI-Stress",
+      "budget": 2048,
+      "tokens": 86,
+      "recall": 1.0
+    },
+    {
+      "id": "s24911-final",
+      "dataset": "MeetAI-Stress",
+      "budget": 4096,
+      "tokens": 86,
+      "recall": 1.0
+    },
+    {
+      "id": "s24911-final",
+      "dataset": "MeetAI-Stress",
+      "budget": 8192,
+      "tokens": 86,
+      "recall": 1.0
+    },
+    {
+      "id": "s24911-release",
+      "dataset": "MeetAI-Stress",
+      "budget": 2048,
+      "tokens": 65,
+      "recall": 1.0
+    },
+    {
+      "id": "s24911-release",
+      "dataset": "MeetAI-Stress",
+      "budget": 4096,
+      "tokens": 65,
+      "recall": 1.0
+    },
+    {
+      "id": "s24911-release",
+      "dataset": "MeetAI-Stress",
+      "budget": 8192,
+      "tokens": 65,
+      "recall": 1.0
+    }
+  ],
+  "startup_s": 3.6995003070001076,
+  "peak_rss_mib": 5194.40625
+}

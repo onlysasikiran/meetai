@@ -1,0 +1,15 @@
+{
+  "batch": "test-s24911",
+  "protocol": "94ec6f5f8a4eb56056f6a2d8b992a79f38da944392246b8bb994fc2d108eccac",
+  "runner": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.39",
+  "cpu": "AMD EPYC 7763 64-Core Processor",
+  "logical_cpus": 4,
+  "ram": "MemTotal:       16367500 kB",
+  "workflow_run": "46132175836",
+  "source_commit": "9f26586629f91a40ab2cb38bc830b335d406ab28",
+  "files": {
+    "baseline.json": "1851ad783223bcd93b7ab27cfc41b56ff841cc4aa8f68e431a2a5230744f8337",
+    "meetai.json": "97ade3ccb350589588a68a690131b75b7daf0bd1be6778c1b6f499027863461a",
+    "review.cms": "258e4778afe5e8140486a8111e075665d293bdefe0fd35e2f3555b39153d2cfc"
+  }
+}
