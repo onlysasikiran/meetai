@@ -1,0 +1,15 @@
+{
+  "batch": "meeting_en_test2_002",
+  "protocol": "94ec6f5f8a4eb56056f6a2d8b992a79f38da944392246b8bb994fc2d108eccac",
+  "runner": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.39",
+  "cpu": "AMD EPYC 9V45 96-Core Processor",
+  "logical_cpus": 4,
+  "ram": "MemTotal:       16367500 kB",
+  "workflow_run": "46132175836",
+  "source_commit": "9f26586629f91a40ab2cb38bc830b335d406ab28",
+  "files": {
+    "baseline.json": "0a5a8e3def05b67c1d62c6e46462fb568b68fd544966356511a37d515d051ebb",
+    "meetai.json": "47c842bfe756df61801db18c48d33de04635b6aa9d5d77f1f8fd9f1efa7c8a01",
+    "review.cms": "e3b378cd551056b59215ddc95b730d64fce9b16e6d51c585bb802ef3067cb200"
+  }
+}
