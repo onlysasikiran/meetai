@@ -121,7 +121,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, default=WORK / "phase2-functional.json")
     output = parser.parse_args().out
-    config_path = ROOT / "configs/meetai.json"
+    config_path = ROOT / "configs/meetai-phase2.json"
     cfg = json.loads(config_path.read_text())
     models = Models(ROOT / ".assets/models", cfg["threads"], cfg["window"])
     WORK.mkdir(exist_ok=True)
