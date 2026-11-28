@@ -1,0 +1,14 @@
+{
+  "batch": "size-50000",
+  "protocol": "94ec6f5f8a4eb56056f6a2d8b992a79f38da944392246b8bb994fc2d108eccac",
+  "runner": "Linux-7.0.0-1018-aws-x86_64-with-glibc2.39",
+  "cpu": "Intel(R) Xeon(R) 6975P-C",
+  "logical_cpus": 4,
+  "ram": "MemTotal:       16078396 kB",
+  "workflow_run": "46132175836",
+  "source_commit": "9f26586629f91a40ab2cb38bc830b335d406ab28",
+  "files": {
+    "baseline.json": "badb2050fad0d6b7096485e6e740e0dfe9f11f1b95b8136b188c35b4ee298817",
+    "meetai.json": "eab68ca53e532f4ab6e8f3a7fbde2df0da8155e2a8f6353d36499a741ffc80b4"
+  }
+}
