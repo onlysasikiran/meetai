@@ -43,7 +43,7 @@ def protocol_id():
              ROOT / "scripts/assets.py", *sorted((ROOT / "configs").glob("*.json")),
              ROOT / "configs/phase3-review-public.pem"]
     # Aggregation, scoring and publishing changes can be replayed from raw measurements.
-    files = [p for p in files if p.name not in {"phase3_verify.py", "phase3_score.py", "phase3_checkpoint.py"}]
+    files = [p for p in files if p.name not in {"phase3_verify.py", "phase3_score.py", "phase3_checkpoint.py", "phase3_restore.py"}]
     return hashlib.sha256("".join(sha(p) for p in files).encode()).hexdigest()
 
 
