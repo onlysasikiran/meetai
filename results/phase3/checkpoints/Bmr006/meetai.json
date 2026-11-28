@@ -1,0 +1,140 @@
+{
+  "system": "meetai",
+  "config_sha256": "857171c9d61178f8d3cb094d3103f341602baa9427bf5caeff4c7a39d8fb8d44",
+  "runtime": {
+    "cpu": "Intel(R) Xeon(R) 6975P-C",
+    "cpus": 4,
+    "python": "3.12.16",
+    "packages": {
+      "llama-cpp-python": "0.3.19",
+      "onnxruntime": "1.23.2",
+      "numpy": "2.3.5",
+      "pypdf": "6.21.4",
+      "tokenizers": "0.22.1"
+    },
+    "omp": "6",
+    "blas": "1",
+    "hash_seed": "0",
+    "system": "Linux-7.0.0-1018-aws-x86_64-with-glibc2.39"
+  },
+  "cold_passes": 2,
+  "warm_passes": 5,
+  "ingestion": {
+    "Bmr006": {
+      "tokens": 33790,
+      "seconds": 4.566562057999988,
+      "cache_hit": false,
+      "turns": 1368,
+      "chunks": 302,
+      "graph_cache_hit": false,
+      "blocks": 51,
+      "links": 1510,
+      "dataset": "QMSum",
+      "source_sha256": "1859c01ef535e3670ba83f62bf5bc2dc14a5ecdd12b243a8047f58e03e56fa51"
+    }
+  },
+  "queries": [
+    {
+      "id": "qt-Bmr006-1",
+      "dataset": "QMSum",
+      "meeting": "Bmr006",
+      "category": "topic-summary",
+      "gold_units": 4,
+      "answer_digest": "e743b139cd89e682d89e1131b4f85600ef26c3f103b997de9b490af988073db2",
+      "claim_lines": 1,
+      "abstained": false,
+      "rejected_lines": 4,
+      "context_tokens": 1018,
+      "complete_turns": [
+        15,
+        16,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        469,
+        470,
+        471
+      ],
+      "delivered_ids": [
+        "15",
+        "16.1",
+        "16.2",
+        "30",
+        "31",
+        "32",
+        "33.1",
+        "33.2",
+        "33.3",
+        "34",
+        "35",
+        "36",
+        "37",
+        "469",
+        "470",
+        "471"
+      ],
+      "usage": {
+        "prompt_tokens": 1130,
+        "completion_tokens": 120,
+        "total_tokens": 1250
+      },
+      "evidence_recall": 0.0,
+      "cold_s": 69.64307169,
+      "stage_s": {
+        "retrieval_s": 0.006855942999976605,
+        "rerank_s": 0.08254117300000985,
+        "expansion_s": 0.0009388180000087232,
+        "turn_rerank_s": 0.143732147999998,
+        "assembly_s": 0.03318109800000002,
+        "generation_s": 69.24131004400002,
+        "validation_s": 0.13186581899998373,
+        "total_s": 69.64306627599998
+      },
+      "llm_calls": 1,
+      "official_turn_recall": 0.0,
+      "cold_repeats_s": [
+        69.64307169,
+        69.653256575
+      ],
+      "without_validation_digest": "e979027329321393b75ac044cd1aa047aa5fca5cc6fa03392304ed1685de8fba",
+      "without_validation_lines": 4,
+      "warm_s": [
+        9.162500003867535e-05,
+        4.8812999978053995e-05,
+        3.260699998008931e-05,
+        2.8477000000748376e-05,
+        2.701400001114962e-05
+      ]
+    }
+  ],
+  "budget_sweep": [
+    {
+      "id": "qt-Bmr006-1",
+      "dataset": "QMSum",
+      "budget": 2048,
+      "tokens": 1198,
+      "recall": 0.25
+    },
+    {
+      "id": "qt-Bmr006-1",
+      "dataset": "QMSum",
+      "budget": 4096,
+      "tokens": 1198,
+      "recall": 0.25
+    },
+    {
+      "id": "qt-Bmr006-1",
+      "dataset": "QMSum",
+      "budget": 8192,
+      "tokens": 1198,
+      "recall": 0.25
+    }
+  ],
+  "startup_s": 2.4759619189999853,
+  "peak_rss_mib": 5338.24609375
+}

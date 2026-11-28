@@ -1,0 +1,15 @@
+{
+  "batch": "Bmr006",
+  "protocol": "94ec6f5f8a4eb56056f6a2d8b992a79f38da944392246b8bb994fc2d108eccac",
+  "runner": "Linux-7.0.0-1018-aws-x86_64-with-glibc2.39",
+  "cpu": "Intel(R) Xeon(R) 6975P-C",
+  "logical_cpus": 4,
+  "ram": "MemTotal:       16078392 kB",
+  "workflow_run": "46132175836",
+  "source_commit": "9f26586629f91a40ab2cb38bc830b335d406ab28",
+  "files": {
+    "baseline.json": "75ab8c38f86dfa12b8e6a48d22a7eb713124f191e38524e0a4e4377adedd71b2",
+    "meetai.json": "a37c338a433b43fad5adfa4179a04b5e31039b793c9ce51a386fc1ff78621be2",
+    "review.cms": "2126ef65b6c8aa828428826dfdeb53316b27731c378544f67aec235f97ddb66a"
+  }
+}
