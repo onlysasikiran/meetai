@@ -1,5 +1,7 @@
 import json
 
+import pytest
+
 from bench.metrics import evidence_score
 from bench.phase3_data import PROTOCOL, scenario
 from bench.phase3_scale import pdf_transcript
@@ -40,3 +42,32 @@ def test_blind_review_deduplicates_identical_system_outputs(tmp_path):
     batch = packets(tmp_path)
     assert len(batch) == 1 and batch[0]["id"] == "q"
     assert all(label not in json.dumps(batch) for label in ("baseline", "meetai", "unguarded_citations"))
+
+
+def test_resume_reuses_matching_files_and_detects_corruption(tmp_path, monkeypatch):
+    import bench.phase3_checkpoint as cp
+
+    monkeypatch.setattr(cp, "BASE", tmp_path)
+    monkeypatch.setattr(cp, "protocol_id", lambda: "protocol-a")
+    path = tmp_path / "size-5000"
+    path.mkdir()
+    output = path / "baseline.json"
+    output.write_text('{"measured":true}')
+    write(path / "done.json", {"batch":"size-5000", "protocol":"protocol-a", "files":{output.name:cp.sha(output)}})
+    monkeypatch.setattr(cp, "run_module", lambda *args: pytest.fail("A finished batch ran twice"))
+    assert cp.valid("size-5000")
+    cp.run_batch("size-5000")
+    output.write_text('{"measured":false}')
+    assert not cp.valid("size-5000")
+
+
+def test_resume_rejects_changed_protocol_or_missing_file(tmp_path, monkeypatch):
+    import bench.phase3_checkpoint as cp
+
+    monkeypatch.setattr(cp,"BASE",tmp_path)
+    monkeypatch.setattr(cp,"protocol_id",lambda:"new")
+    folder=tmp_path/"probe"
+    write(folder/"done.json",{"batch":"probe","protocol":"old","files":{"probe.json":"missing"}})
+    assert not cp.valid("probe")
+    write(folder/"done.json",{"batch":"probe","protocol":"new","files":{"probe.json":"missing"}})
+    assert not cp.valid("probe")
