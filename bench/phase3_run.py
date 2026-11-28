@@ -38,6 +38,7 @@ def runtime():
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("system", choices=("baseline", "meetai"))
+    ap.add_argument("--meeting", help="Run one held-out meeting, or bank for the operational samples")
     args = ap.parse_args()
     name = args.system
     cfg = config(name)
@@ -55,6 +56,8 @@ def main():
         cache = Cache(Path(tmp) / "fresh.sqlite")
         try:
             for meeting, ds, path, cases in heldout():
+                if args.meeting and args.meeting != meeting:
+                    continue
                 idx = Index.build(path, models, cfg, cache)
                 assert not idx.ingest["cache_hit"]
                 run["ingestion"][meeting] = dict(idx.ingest, dataset=ds, source_sha256=digest(path.read_bytes()))
@@ -100,12 +103,15 @@ def main():
                             run["budget_sweep"].append({"id": case["id"], "dataset": ds, "budget": budget,
                                                         "tokens": used, "recall": evidence_score(case["evidence"],idx.complete_turns(ids))})
                 write(OUT / (name + "-progress.json"), run)
-            for meeting, uid, path in bank_test():
+            bank_work = bank_test() if args.meeting in (None, "bank") else ()
+            for meeting, uid, path in bank_work:
                 idx = Index.build(path, models, cfg, cache)
                 assert not idx.ingest["cache_hit"]
                 run["ingestion"][meeting] = dict(idx.ingest, dataset="MeetingBank", uid=uid, source_sha256=digest(path.read_bytes()))
         finally:
             cache.close()
+    if not run["ingestion"]:
+        raise ValueError(f"Unknown held-out meeting: {args.meeting}")
     run["peak_rss_mib"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
     write(OUT / (name + ".json"), run)
 

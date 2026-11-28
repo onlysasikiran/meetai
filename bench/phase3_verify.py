@@ -17,6 +17,10 @@ def verify(directory):
         if path == correction["path"]:
             assert expected == correction["before_sha256"]
             expected = correction["after_sha256"]
+        if path in correction.get("additional_files", {}):
+            patch = correction["additional_files"][path]
+            assert expected == patch["before_sha256"]
+            expected = patch["after_sha256"]
         assert sha256((ROOT / path).read_bytes()).hexdigest() == expected, path
     runs = {k: read(directory / (k + ".json")) for k in ("baseline", "meetai")}
     base = runs["baseline"]

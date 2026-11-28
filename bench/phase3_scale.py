@@ -65,13 +65,19 @@ def tier(models, target=None, turns=None):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("system",choices=("baseline","meetai"))
-    system = ap.parse_args().system
+    ap.add_argument("--tier", choices=[str(t) for t in PROTOCOL["stress_targets"]] + ["turns"])
+    args = ap.parse_args()
+    system = args.system
+    targets = [*PROTOCOL["stress_targets"], "turns"]
+    if args.tier:
+        targets = ["turns" if args.tier == "turns" else int(args.tier)]
+    suffix = "-" + args.tier if args.tier else ""
     cfg = config(system)
     models = Models(ROOT / ".assets/models", cfg["threads"], cfg["window"])
     if system == "meetai":
         _ = models.nli
     results = []
-    for target in [*PROTOCOL["stress_targets"], "turns"]:
+    for target in targets:
         rows, cases, count = (tier(models,turns=PROTOCOL["separate_turns"]) if target == "turns" else tier(models,target=target))
         txt = save_transcript("scale-" + str(target), rows)
         paths = [txt]
@@ -107,12 +113,12 @@ def main():
                             "abstained":pred["abstained"],"answer_digest":fprint})
                     record["process_high_water_mib"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
                     results.append(record)
-                    write(OUT / ("scale-" + system + ".json"), results)
+                    write(OUT / ("scale-" + system + suffix + ".json"), results)
                     print(system, target, path.suffix, count, len(rows), round(idx.ingest["seconds"],1), flush=True)
                 finally:
                     cache.close()
             del idx
-    assert len(results) == len(PROTOCOL["stress_targets"])+3
+    assert len(results) == len(targets) + (2 if 20000 in targets else 0)
 
 
 if __name__ == "__main__":
