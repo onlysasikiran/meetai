@@ -26,7 +26,7 @@ def pdf_transcript(path, lines):
         return len(objects)
     add("<< /Type /Catalog /Pages 2 0 R >>")
     add("")
-    font = add("<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>")
+    font = add("<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>")
     pages = []
     for start in range(0, len(lines), 44):
         commands = ["BT /F1 8 Tf 11 TL 18 575 Td"]
