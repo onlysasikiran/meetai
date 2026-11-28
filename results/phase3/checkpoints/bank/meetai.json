@@ -1,0 +1,54 @@
+{
+  "system": "meetai",
+  "config_sha256": "857171c9d61178f8d3cb094d3103f341602baa9427bf5caeff4c7a39d8fb8d44",
+  "runtime": {
+    "cpu": "AMD EPYC 7763 64-Core Processor",
+    "cpus": 4,
+    "python": "3.12.16",
+    "packages": {
+      "llama-cpp-python": "0.3.19",
+      "onnxruntime": "1.23.2",
+      "numpy": "2.3.5",
+      "pypdf": "6.21.4",
+      "tokenizers": "0.22.1"
+    },
+    "omp": "6",
+    "blas": "1",
+    "hash_seed": "0",
+    "system": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.39"
+  },
+  "cold_passes": 2,
+  "warm_passes": 5,
+  "ingestion": {
+    "test-bank-first": {
+      "tokens": 1504,
+      "seconds": 0.43046835200000544,
+      "cache_hit": false,
+      "turns": 52,
+      "chunks": 12,
+      "graph_cache_hit": false,
+      "blocks": 2,
+      "links": 60,
+      "dataset": "MeetingBank",
+      "uid": "SeattleCityCouncil_06132016_Res 31669",
+      "source_sha256": "dd4a20bb1816db8b651b3111467cb20c675265ebc49cbdd17eb1d8b2923a6676"
+    },
+    "test-bank-longest": {
+      "tokens": 91126,
+      "seconds": 25.176491503999983,
+      "cache_hit": false,
+      "turns": 5061,
+      "chunks": 793,
+      "graph_cache_hit": false,
+      "blocks": 133,
+      "links": 3965,
+      "dataset": "MeetingBank",
+      "uid": "DenverCityCouncil_02082021_20-0888",
+      "source_sha256": "325c635f2f09d1b4d0b7311cc9d8113ab3e45c895785a8bf746039de215d0e61"
+    }
+  },
+  "queries": [],
+  "budget_sweep": [],
+  "startup_s": 3.4270017199999927,
+  "peak_rss_mib": 5285.44140625
+}
