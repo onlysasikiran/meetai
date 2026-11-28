@@ -1,6 +1,6 @@
 # MeetAI · Meeting transcript RAG
 
-MeetAI answers questions about one English meeting, summarizes discussions and extracts cited decisions and action items. It reads TXT, Markdown and text-layer PDF files and runs on CPU without an API key. **Phase 2 delivers the working MeetAI system alongside the frozen Phase 1 baseline.**
+MeetAI answers questions about one English meeting, summarizes discussions and extracts cited decisions and action items. It reads TXT, Markdown and text-layer PDF files and runs on CPU without an API key.
 
 ## Problem statement
 
@@ -15,24 +15,24 @@ Both systems use the same speaker turns, BGE-small embeddings, BM25, MiniLM rera
 | Stage | Standard baseline | MeetAI |
 | --- | --- | --- |
 | Organize | Fixed 160-token children with two-child parents | Group neighboring children into discussion blocks by embedding similarity. Build sparse cross-block links from shared terms and semantic neighbors. Record explicit, unambiguous aliases with source IDs. |
-| Retrieve | Rerank 12 candidate passages and expand three children | Start with the same hybrid search. For missing evidence, revisions or topic questions, also inspect parent blocks, remote links and alias references. Rerank at most 36 source turns. |
+| Retrieve | Rerank 12 candidate passages and expand three children | Start with the same hybrid search. For missing evidence, revisions or topic questions, also inspect parent blocks, remote links and alias references. Rerank at most 20 source turns. For ordinary fact and topic questions, include neighboring dialogue when it helps preserve a response with its question. |
 | Assemble | Chronological evidence under 1,024 tokens | Prioritize complementary facts, filter similar project names, deduplicate and restore source order. The simple route has a 320-token ceiling and the expanded route has 1,024. |
 | Validate | Check that cited turns were delivered | Also check numbers, named subjects and evidence for revisions. A local entailment model scores each claim against its citations. Unsupported claims can trigger abstention. |
 | Summarize or extract | Contiguous map/reduce summaries | Select turns across discussion blocks, consolidate original citations hierarchically, and produce summaries or typed minutes with cited owners and deadlines. |
 | Reuse | SQLite index and exact-answer cache | Also persist the hierarchy and links. The two systems have separate answer-cache keys. |
 
-On the 190-turn Juniper development fixture, MeetAI returned **Marek** at turn 145 and **May 9** at turn 170. A separate question needed turn 23 to connect Juniper to its internal name and turn 94 to establish the **Cedar** gate. Both citations appeared in the answer. These are functional examples. The held-out comparison belongs to Phase 3. [Executed Phase 2 cases](results/phase2-functional.json)
+On the 190-turn Juniper development fixture, MeetAI returned **Marek** at turn 145 and **May 9** at turn 170. A separate question needed turn 23 to connect Juniper to its internal name and turn 94 to establish the **Cedar** gate. Both citations appeared in the answer. These are Phase 2 functional examples. The separate held-out protocol uses previously unseen meetings. [Executed Phase 2 cases](results/phase2-functional.json)
 
 ## Datasets
 
-| Dataset | Phase 1 use | Source |
+| Dataset | Phase 3 use | Source |
 | --- | --- | --- |
-| ELITR-Bench | Factual meeting QA. English dev meetings 001 and 003 for tuning, 002 and 004 for the checkpoint. | [Questions and reference answers](https://github.com/utter-project/ELITR-Bench) · [Original transcripts](https://hdl.handle.net/11234/1-4692) |
-| QMSum | Topic summaries and supporting turns. Training meetings Bed004 and ES2002a for tuning, validation meetings Bed002 and Bmr005 for the checkpoint. | [Dataset and annotations](https://github.com/Yale-LILY/QMSum) |
-| MeetingBank | City council agenda segments from the validation split for ingestion measurements and summary testing. | [Dataset downloads](https://huggingface.co/datasets/huuuyeah/meetingbank) · [Project](https://meetingbank.github.io/) |
-| MeetAI-Stress | Project-generated meetings with changed owners, revised dates, distant evidence and unanswerable questions. Scenarios 0–1 for tuning, 2–3 for the checkpoint. | [Generator and ground truth](bench/stress.py) |
+| ELITR-Bench | Six factual questions from official English test2 meetings 001–003. | [Questions and reference answers](https://github.com/utter-project/ELITR-Bench) · [Original transcripts](https://hdl.handle.net/11234/1-4692) |
+| QMSum | Three topic-summary questions from official test meetings Bed003, Bmr006 and ES2004a. | [Dataset and annotations](https://github.com/Yale-LILY/QMSum) |
+| MeetingBank | First and longest-by-word-count test agenda segments for indexing throughput and RAM. | [Dataset downloads](https://huggingface.co/datasets/huuuyeah/meetingbank) · [Project](https://meetingbank.github.io/) |
+| MeetAI-Stress | Ten questions from two held-out scenarios. Separate scale tests exercise up to 500,000 source tokens and 20,000 speaker turns. | [Held-out generator and ground truth](bench/phase3_data.py) |
 
-The [asset manifest](configs/assets.json) records the original download URLs and SHA-256 checksums. The [benchmark protocol](BENCHMARK.md) lists the splits reserved for later evaluation. See [source and license notes](SOURCES.md) for reuse terms.
+The original URLs and SHA-256 checksums are in the [base manifest](configs/assets.json) and [Phase 3 additions](configs/phase3-assets.json). The [benchmark protocol](BENCHMARK.md) lists the disjoint tuning and evaluation splits. See [source and license notes](SOURCES.md) for reuse terms.
 
 ## Phase 1 baseline measurements
 
@@ -50,8 +50,8 @@ The benchmark measured **25.28 s P95** for 44 requests that required fresh infer
 
 | File | Contents |
 | --- | --- |
-| [Phase report](PHASE_REPORT.md) | Phase 2 changes, functional tests, limitations and Phase 3 handoff |
-| [MeetAI settings](configs/meetai.json) · [Functional results](results/phase2-functional.json) | Phase 2 settings and model outputs from the acceptance cases |
+| [Phase report](PHASE_REPORT.md) | Current phase, measurements, decisions, limitations and handoff |
+| [MeetAI settings](configs/meetai.json) · [Functional results](results/phase2-functional.json) | Current settings and archived Phase 2 acceptance outputs |
 | [Benchmark protocol](BENCHMARK.md) | Data splits, six metrics, claim-review rules and reproduction commands |
 | [Research and dependencies](SOURCES.md) | Research decisions, upstream data terms, model sources and pinned assets |
 | [Frozen settings](configs/baseline.json) | Winning retrieval settings and generator configuration |

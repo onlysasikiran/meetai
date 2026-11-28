@@ -1,54 +1,27 @@
-# Phase 2 · MeetAI implementation
+# Phase 3 · Benchmarking and optimization
 
-**Status:** Implemented and tested on a hosted Linux CPU. The frozen Phase 1 baseline and its scores are available in the same repository. [Phase 1 checkpoint report](https://github.com/onlysasikiran/meetai/blob/a5f555a608325cfbb8716f806c9e23933136fa94/PHASE_REPORT.md)
+**Problem.** A meeting can revise an owner or deadline and use a second name for the same project. Relevant passages may still leave the generator with an obsolete answer or a citation that mentions the right person without establishing the decision.
 
-## Problem and completed work
+## Completed work
 
-A relevant chunk can contain a former owner, a similar project name or only half of an alias relationship. MeetAI reconstructs the evidence needed to answer one question and retains the original speaker-turn citations.
+- Froze the standard RAG and selected the linked RAG configuration using six development meetings. The linked version now reranks 20 candidate turns and retains neighboring dialogue for suitable fact and topic questions. [Freeze](configs/phase3-freeze.json) · [Selections and measured ablations](results/phase3/dev.json)
+- Measured a standalone Phase 3 baseline on an AMD CPU. It delivered 68.4% evidence recall on the held-out roster. The paired benchmark measures both systems on the same host within each batch. [Standalone raw measurements](results/phase3/baseline-amd-reference.json)
+- Added separate GitHub checkpoints for eight held-out QA meetings, two MeetingBank operational inputs in a shared batch, seven scale workloads, a generation ablation and the test suite. Every completed batch records its source commit, CPU and file hashes. [Checkpoint folder](results/phase3/checkpoints) · [Hosted benchmark](https://github.com/onlysasikiran/meetai/actions/runs/46132175836)
 
-| Capability | Implementation |
-| --- | --- |
-| Hierarchy and links | Timestamp-aware turns and fragments form 160-token children. Adjacent children form topic blocks with centroid vectors. Each child has up to five nonlocal links selected using rare terms, projection neighborhoods and cosine similarity. Explicit alias declarations retain their source turn. |
-| Adaptive retrieval | Start with the baseline hybrid search and reranker. Inspect missing terms, requested fields, temporal language and topic scope. Expand at most once into parent blocks, linked children and alias references. Rerank up to 36 turns across at most 12 candidate children. |
-| Evidence assembly | Prioritize coverage of requested fields. For current-state queries, withhold explicitly historical evidence when later in-scope updates cover its requested fields. Deduplicate and render original turns in transcript order, with a 320-token simple or 1,024-token expanded ceiling. |
-| Grounding | Check delivered IDs, numbers, named subjects, explicit date replacements and cited alias paths. A pinned local DeBERTa entailment classifier can reject unsupported claims. Later conflicting evidence is checked for scoped current-state questions. |
-| Summaries and extraction | Topic questions use linked retrieval. Whole-meeting summaries select turns across blocks and reduce adjacent evidence packets using original source IDs. Pydantic and constrained JSON decoding produce decisions, actions, commitments, open issues and follow-ups. Each accepted owner and deadline has its own citations. |
-| Persistence | SQLite stores embeddings, graph metadata and exact answers. Keys include content and configuration. A reopened index can answer a repeated question with zero generation calls. |
+## Development results
 
-**Decisions.** Kept the Phase 1 Qwen weights, tokenizer, QA prompt, decoding settings and citation format. Graph construction uses existing embeddings and source text. A separate local classifier checks semantic support without another generative call. Routing rules, graph settings and the 0.60 entailment threshold are implementation defaults for Phase 3 to evaluate. [Configuration](configs/meetai.json) · [Research and dependencies](SOURCES.md)
+| Retrieval version | Equal-dataset evidence recall | Mean evidence tokens | Mean retrieval |
+| --- | ---: | ---: | ---: |
+| Standard RAG | 70.4% | 842 | 94 ms |
+| Phase 2 MeetAI | 41.1% | 297 | 178 ms |
+| Smaller reranking pool | 41.1% | 233 | 136 ms |
+| Neighboring turns | 50.3% | 375 | 189 ms |
+| Both changes, frozen MeetAI | 50.3% | 324 | 144 ms |
 
-## Executed results
+The 20-turn pool removed 16 reranking slots. Neighboring turns increased recall by 9.2 percentage points compared with Phase 2. Disabling coverage selection on the finalist raised recall to 63.1% but increased mean evidence from 324 to 509 tokens. The predeclared selection considered four full-architecture candidates. Leave-one-out variants diagnose tradeoffs and did not reopen selection. [Selection rules](configs/phase3-protocol.json)
 
-**30 pytest tests passed. All 13 functional checks passed with the pinned CPU models.** The acceptance checks exercise interfaces and named expected outcomes. They are separate from the six-metric benchmark. [Per-case outputs, evidence IDs and retrieval traces](results/phase2-functional.json)
+## Checkpoint status and recovery
 
-| Functional case | Observed result |
-| --- | --- |
-| Revised owner and deadline | On the 190-turn Juniper development fixture, returned Marek at T145 and May 9 at T170 using 94 evidence tokens. The historical query independently returned Sana at T8. |
-| Distant alias and similar project | Returned Cedar. T23 establishes the internal name and T94 establishes the gate. The generator received 60 evidence tokens. |
-| Missing information | Abstained on an unrecorded insurance premium. |
-| Input formats and cache | Returned Priya at T3 from TXT, Markdown and text-layer PDF. Reopening the PDF index and repeating the question used zero generation calls. |
-| Whole-meeting and topic summaries | The Riverside summary identified the launch decision, checklist and open quote. The topic query cited T4. A forced 45-token budget exercised two evidence packets and a final consolidation in three generation calls. |
-| Typed minutes | Returned the approved decision, a checklist action assigned to Pablo and due May 14, an open vendor quote and its follow-up. The owner's and deadline's evidence both resolve to T2. |
-| Upstream adapter | On ELITR development case `el-001-3`, the pipeline delivered 946 evidence tokens and abstained on an answerable question. This checks execution and exposes a real coverage limitation. |
+The paired held-out and scale batches publish as each measurement finishes. The final comparison requires all batches and scored output fingerprints. The local suite passed 35 tests, including restart, fingerprint, missing-file and corruption cases. The hosted run records the suite from its launch commit separately. Reviewed answers can be restored from encrypted packets. [Recovery instructions](results/phase3/checkpoints/README.md) · [Benchmark protocol and datasets](BENCHMARK.md)
 
-The pytest suite also covers conditional expansion, semantic edges with disjoint wording, graph invalidation, ambiguous and negated aliases, conflicting dates, missing or mismatched citations, transcript fragments, timestamps, typed field rejection and multi-level summary reduction.
-
-## Reproduction
-
-```bash
-bash scripts/setup.sh
-OPENBLAS_NUM_THREADS=1 .venv/bin/python -m pytest -q
-OPENBLAS_NUM_THREADS=1 .venv/bin/python -m bench.phase2_smoke
-```
-
-The smoke run writes a fresh report to `.work/phase2-functional.json`. Setup fetches the source assets and models with SHA-256 verification. Inference and these checks then run offline. The examples and runnable CLI commands are in the [README](README.md).
-
-## Limitations
-
-English naming and revision cues can miss implicit aliases, pronouns and informal corrections. Entailment scores can reject valid paraphrases or accept a plausible error. They assess the retrieved evidence and cannot detect an update the retriever missed. Timestamps are preserved for supported leading time formats, and ordering follows the supplied transcript. Global consolidation can omit details. Structured extraction returns up to eight records per final response, and an incomplete JSON response yields an explicit validation failure. PDF input requires a text layer.
-
-The synthetic examples are development cases. The official ELITR and QMSum test splits, massive-context targets, matched latency and quality comparisons, ablations and target-laptop measurements remain for Phase 3.
-
-## Phase 3 handoff
-
-Start from this checkpoint. Keep the published baseline configuration, model bytes, evidence IDs, data splits and scoring rubric fixed. Compare both systems on the same hardware, with the same cache regimes. Track false abstentions and trace evidence loss before tuning. Profile the added turn reranking and verifier separately, then run the planned component ablations and held-out evaluation. [Benchmark protocol and six metrics](BENCHMARK.md)
+The held-out sample contains nine real questions and ten synthetic questions. Timing is CPU-specific. Scoring uses one blinded Work reviewer. The independent Phase 4 audit is a later deliverable. [Phase 2 checkpoint](https://github.com/onlysasikiran/meetai/blob/a757327a82391773402626a3d5ea140d4de44612/PHASE_REPORT.md)
