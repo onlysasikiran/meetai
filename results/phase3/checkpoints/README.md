@@ -11,3 +11,11 @@ python3 -m bench.phase3_checkpoint --pending
 ~~~
 
 The full Phase 1 baseline and Phase 2 acceptance checkpoints stay available in Git history. The standalone AMD baseline and development ablations predate these paired hosted runs. Changing an experiment input invalidates its prior checkpoint. Scoring and reporting can be repeated using saved predictions.
+
+The restore command decrypts finished review packets into the ignored work directory. It checks the saved hashes and refuses conflicting records. Reviewers can restore batches as they arrive and rescore without generating answers again.
+
+~~~bash
+.venv/bin/python -m bench.phase3_restore --key /path/to/review-private.pem
+.venv/bin/python -m bench.phase3_score --packet
+.venv/bin/python -m bench.phase3_checkpoint --gather .work/phase3
+~~~
