@@ -1,0 +1,19 @@
+{
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "visible_logical_cpus": 9,
+  "inference_threads": 6,
+  "ram_kib": 10206472,
+  "python": "3.12.14",
+  "numpy_blas_threads": 1,
+  "device": "CPU",
+  "model_offload_layers": 0,
+  "ggml_system_info": "CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | ",
+  "native_libraries_sha256": {
+    "libggml-base.so": "93f61ba585e4d8de141e99d7f1a8f04d97950c5bfc7f5514505e9290d55ad94b",
+    "libggml-cpu.so": "78f579edfd62fd42a6f6eb75d80c80f4ee9417536f6c83fe7b66624b838f6939",
+    "libggml.so": "22164ce12c35b4a75be7158f787389f80373bbec679945abf92d34492f22cc3a",
+    "libllama.so": "0d53fd33a92d09fb3e1d8aa255587392801f78c9f6d2d3a9ba6f448452c2b4cc",
+    "libmtmd.so": "b730795c732137a0193e38a0ed5a6b669b4926c5a0008684eb2a6d54e572fad3"
+  },
+  "driver": "Separate sequential processes, one system at a time; GPU offload disabled. The application process RSS includes touched model pages and native allocators."
+}
