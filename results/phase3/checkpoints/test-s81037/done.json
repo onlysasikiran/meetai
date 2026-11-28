@@ -1,0 +1,15 @@
+{
+  "batch": "test-s81037",
+  "protocol": "94ec6f5f8a4eb56056f6a2d8b992a79f38da944392246b8bb994fc2d108eccac",
+  "runner": "Linux-7.0.0-1018-aws-x86_64-with-glibc2.39",
+  "cpu": "Intel(R) Xeon(R) 6975P-C",
+  "logical_cpus": 4,
+  "ram": "MemTotal:       16078396 kB",
+  "workflow_run": "46132175836",
+  "source_commit": "9f26586629f91a40ab2cb38bc830b335d406ab28",
+  "files": {
+    "baseline.json": "a6bc40a0d6deab8e3131bfac7760ab375b4257911111ef1b900982b31d4070b7",
+    "meetai.json": "38270752c72f995df415632d7704fe80f87538ee3a5e267d04e89c3b379571d0",
+    "review.cms": "b7e75c9ff6bbc2fa590b34ade88d8875431b1faa3887960564e6c59c9d20283e"
+  }
+}
