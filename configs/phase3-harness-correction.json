@@ -1,6 +1,15 @@
 {
   "path": "bench/phase3_scale.py",
   "before_sha256": "424abe8dcb8eea9b08c2077f55da120aedaef5f23ee33988c3cb16a9c294ece7",
-  "after_sha256": "650a0f02b17daf17cdbf248d813b7b326eb7c7eed8534666e5342fdca3342a28",
-  "reason": "Explicit WinAnsiEncoding preserves straight apostrophes in the ASCII PDF test fixture. Only the synthetic PDF writer changed. Retrieval, generator, configurations, selected cases and gold are frozen."
+  "after_sha256": "3fd83ff87813f3cb4879ff13d9c75fadb489c6accaaa1348c681246fa4928dd5",
+  "reason": "Explicit WinAnsiEncoding preserves straight apostrophes in the ASCII PDF test fixture. Only the synthetic PDF writer changed. Retrieval, generator, configurations, selected cases and gold are frozen.",
+  "pdf_only_sha256": "650a0f02b17daf17cdbf248d813b7b326eb7c7eed8534666e5342fdca3342a28",
+  "runner_note": "Optional --tier permits independent size jobs. Each job measures both systems on the same runner. The default schedule and checks are unchanged.",
+  "additional_files": {
+    "bench/phase3_run.py": {
+      "before_sha256": "7ee717da7dd13d88213cd776ece86a9211c8f2029ee44a170aa7e0821ef4b6af",
+      "after_sha256": "0a70a6135e5f299adfebcf2ee7f50e19130478c3f6ab98dadbb23b7b17bfc992",
+      "reason": "Optional meeting selector for paired, resumable timing batches; unfiltered path remains the full test."
+    }
+  }
 }
