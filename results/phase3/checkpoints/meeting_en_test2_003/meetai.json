@@ -1,0 +1,244 @@
+{
+  "system": "meetai",
+  "config_sha256": "857171c9d61178f8d3cb094d3103f341602baa9427bf5caeff4c7a39d8fb8d44",
+  "runtime": {
+    "cpu": "Intel(R) Xeon(R) 6975P-C",
+    "cpus": 4,
+    "python": "3.12.16",
+    "packages": {
+      "llama-cpp-python": "0.3.19",
+      "onnxruntime": "1.23.2",
+      "numpy": "2.3.5",
+      "pypdf": "6.21.4",
+      "tokenizers": "0.22.1"
+    },
+    "omp": "6",
+    "blas": "1",
+    "hash_seed": "0",
+    "system": "Linux-7.0.0-1018-aws-x86_64-with-glibc2.39"
+  },
+  "cold_passes": 2,
+  "warm_passes": 5,
+  "ingestion": {
+    "meeting_en_test2_003": {
+      "tokens": 13895,
+      "seconds": 1.7882223259999819,
+      "cache_hit": false,
+      "turns": 657,
+      "chunks": 123,
+      "graph_cache_hit": false,
+      "blocks": 22,
+      "links": 615,
+      "dataset": "ELITR-Bench",
+      "source_sha256": "bb04077575d43ee026c67b10ade06b17aa72f9a9e5e66d8578a00917e3d7e641"
+    }
+  },
+  "queries": [
+    {
+      "id": "et-003-1",
+      "dataset": "ELITR-Bench",
+      "meeting": "meeting_en_test2_003",
+      "category": "simple",
+      "gold_units": 4,
+      "answer_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "claim_lines": 0,
+      "abstained": true,
+      "rejected_lines": 1,
+      "context_tokens": 300,
+      "complete_turns": [
+        331,
+        332,
+        333,
+        339,
+        340,
+        341,
+        342,
+        368,
+        369,
+        370
+      ],
+      "delivered_ids": [
+        "331",
+        "332",
+        "333",
+        "339",
+        "340",
+        "341",
+        "342",
+        "368",
+        "369",
+        "370"
+      ],
+      "usage": {
+        "prompt_tokens": 406,
+        "completion_tokens": 72,
+        "total_tokens": 478
+      },
+      "evidence_recall": 0.75,
+      "cold_s": 27.95609565799998,
+      "stage_s": {
+        "retrieval_s": 0.005385818999968706,
+        "rerank_s": 0.06879147500001181,
+        "expansion_s": 0.0003165489999901183,
+        "turn_rerank_s": 0.04995121700000027,
+        "assembly_s": 0.005065102999992632,
+        "generation_s": 27.258678748999955,
+        "validation_s": 0.5662415979999764,
+        "total_s": 27.956089917999975
+      },
+      "llm_calls": 1,
+      "cold_repeats_s": [
+        27.95609565799998,
+        28.397812361999968
+      ],
+      "without_validation_digest": "0ecc0b158d102b84ca15c327be53f79e4c60f3605a6ba335bbbd067b3da40ca2",
+      "without_validation_lines": 1,
+      "warm_s": [
+        9.817799997335896e-05,
+        4.6725000004244066e-05,
+        3.348500001720822e-05,
+        2.9296999969119497e-05,
+        3.201900000249225e-05
+      ]
+    },
+    {
+      "id": "et-003-2",
+      "dataset": "ELITR-Bench",
+      "meeting": "meeting_en_test2_003",
+      "category": "topic-summary",
+      "gold_units": 2,
+      "answer_digest": "979124f14ee87c41a05af37daa6e724cc2b3d65cc810fd7e2c6509a90123cf60",
+      "claim_lines": 1,
+      "abstained": false,
+      "rejected_lines": 0,
+      "context_tokens": 808,
+      "complete_turns": [
+        57,
+        58,
+        59,
+        60,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        281,
+        283,
+        284,
+        285,
+        290,
+        291,
+        292
+      ],
+      "delivered_ids": [
+        "57",
+        "58",
+        "59",
+        "60",
+        "211",
+        "212",
+        "213",
+        "214",
+        "215",
+        "216",
+        "269",
+        "270",
+        "271",
+        "272",
+        "273",
+        "274",
+        "281",
+        "283",
+        "284",
+        "285",
+        "290",
+        "291",
+        "292"
+      ],
+      "usage": {
+        "prompt_tokens": 917,
+        "completion_tokens": 120,
+        "total_tokens": 1037
+      },
+      "evidence_recall": 0.0,
+      "cold_s": 58.90541596100002,
+      "stage_s": {
+        "retrieval_s": 0.006050710000010895,
+        "rerank_s": 0.07524227400000427,
+        "expansion_s": 0.0009082569999918633,
+        "turn_rerank_s": 0.07330426100003251,
+        "assembly_s": 0.015393896999967183,
+        "generation_s": 58.554243930999974,
+        "validation_s": 0.1780193299999837,
+        "total_s": 58.90541181999998
+      },
+      "llm_calls": 1,
+      "cold_repeats_s": [
+        58.90541596100002,
+        59.00386630999998
+      ],
+      "without_validation_digest": "979124f14ee87c41a05af37daa6e724cc2b3d65cc810fd7e2c6509a90123cf60",
+      "without_validation_lines": 1,
+      "warm_s": [
+        0.00015604399999347152,
+        3.775099997938014e-05,
+        3.0429999981151923e-05,
+        2.7246000001923676e-05,
+        2.6224999999158172e-05
+      ]
+    }
+  ],
+  "budget_sweep": [
+    {
+      "id": "et-003-1",
+      "dataset": "ELITR-Bench",
+      "budget": 2048,
+      "tokens": 300,
+      "recall": 0.75
+    },
+    {
+      "id": "et-003-1",
+      "dataset": "ELITR-Bench",
+      "budget": 4096,
+      "tokens": 300,
+      "recall": 0.75
+    },
+    {
+      "id": "et-003-1",
+      "dataset": "ELITR-Bench",
+      "budget": 8192,
+      "tokens": 300,
+      "recall": 0.75
+    },
+    {
+      "id": "et-003-2",
+      "dataset": "ELITR-Bench",
+      "budget": 2048,
+      "tokens": 808,
+      "recall": 0.0
+    },
+    {
+      "id": "et-003-2",
+      "dataset": "ELITR-Bench",
+      "budget": 4096,
+      "tokens": 808,
+      "recall": 0.0
+    },
+    {
+      "id": "et-003-2",
+      "dataset": "ELITR-Bench",
+      "budget": 8192,
+      "tokens": 808,
+      "recall": 0.0
+    }
+  ],
+  "startup_s": 2.3617951420000054,
+  "peak_rss_mib": 5439.91796875
+}

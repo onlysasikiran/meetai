@@ -1,0 +1,15 @@
+{
+  "batch": "meeting_en_test2_003",
+  "protocol": "94ec6f5f8a4eb56056f6a2d8b992a79f38da944392246b8bb994fc2d108eccac",
+  "runner": "Linux-7.0.0-1018-aws-x86_64-with-glibc2.39",
+  "cpu": "Intel(R) Xeon(R) 6975P-C",
+  "logical_cpus": 4,
+  "ram": "MemTotal:       16078392 kB",
+  "workflow_run": "46132175836",
+  "source_commit": "9f26586629f91a40ab2cb38bc830b335d406ab28",
+  "files": {
+    "baseline.json": "9753b043cd0f96fa3f99e3798a0bff2d6d9f32f968289807df8a076a2663c974",
+    "meetai.json": "7bbf862faac76aa17f6daae770ad903b771b36436b987bf1c97e0a29d16d2c90",
+    "review.cms": "c5c7cbe947ed1323904fdd06f0c5675855adf725984dd22ae8e9e73e3ef76685"
+  }
+}
